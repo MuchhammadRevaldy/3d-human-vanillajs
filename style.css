@@ -664,7 +664,7 @@ html[lang="id"] .btn-primary-large {
 .about-page-container {
   position: relative;
   min-height: 100vh;
-  padding: 120px 20px 80px;
+  padding: 120px 20px 0;
   font-family: 'Inter', sans-serif;
 }
 
@@ -698,6 +698,7 @@ html[lang="id"] .btn-primary-large {
   z-index: 10;
   max-width: 1100px;
   margin: 0 auto;
+  padding-bottom: 80px;
 }
 
 .about-hero {
@@ -933,7 +934,7 @@ html[lang="id"] .btn-primary-large {
 .content-page-container {
   position: relative;
   min-height: 100vh;
-  padding: 120px 5% 80px;
+  padding: 120px 5% 0;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -994,6 +995,7 @@ html[lang="id"] .btn-primary-large {
   gap: 24px;
   position: relative;
   z-index: 10;
+  margin-bottom: 80px;
 }
 
 .bento-card {
@@ -1284,8 +1286,7 @@ html[lang="id"] .btn-primary-large {
 .contact-page-container {
   position: relative;
   min-height: calc(100vh - 80px);
-  padding: 120px 20px 100px;
-  overflow: hidden;
+  padding: 120px 20px 0;
 }
 
 .contact-bg-blob {
@@ -1295,6 +1296,7 @@ html[lang="id"] .btn-primary-large {
   z-index: 0;
   opacity: 0.5;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .blob-c {
@@ -1318,6 +1320,7 @@ html[lang="id"] .btn-primary-large {
   z-index: 10;
   max-width: 1100px;
   margin: 0 auto;
+  padding-bottom: 80px;
 }
 
 .contact-header {

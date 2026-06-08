@@ -3,7 +3,7 @@
 
 const PANEL_CONTENT_ID = {
 
-  
+
   'neural': {
     primary: `<h2 class="panel-title">Pola Demielinasi Ringan &amp; Kognitif</h2>
 <div class="panel-body-text">
@@ -139,7 +139,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'neurotrans': {
     primary: `<h2 class="panel-title">Pola Ketidakseimbangan Neurotransmiter &amp; Mood-Kognitif</h2>
 <div class="panel-body-text">
@@ -252,7 +252,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'hormone_z': {
     primary: `<h2 class="panel-title">Pola Osteoporosis Pascamenopause &amp; Defisiensi Hormon</h2>
 <div class="panel-body-text">
@@ -379,7 +379,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'cardio': {
     primary: `<h2 class="panel-title">Pola Disfungsi Endotelial &amp; Risiko Kardiovaskular</h2>
 <div class="panel-body-text">
@@ -473,7 +473,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'toxins_panel': {
     primary: `<h2 class="panel-title">Pola Beban Toksin Total &amp; Toksisitas Lingkungan</h2>
 <div class="panel-body-text">
@@ -573,7 +573,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'oxi': {
     primary: `<h2 class="panel-title">Pola Kelelahan Kronis &amp; Kerusakan Oksidatif Multi-Sistem</h2>
 <div class="panel-body-text">
@@ -664,7 +664,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'food': {
     primary: `<h2 class="panel-title">Tes Sensitivitas Makanan Komprehensif — 209 Makanan &amp; 57 Aditif</h2>
 <div class="panel-body-text">
@@ -721,7 +721,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'gutzoomer': {
     primary: `<h2 class="panel-title">Pola Permeabilitas Usus &amp; Peradangan</h2>
 <div class="panel-body-text">
@@ -820,7 +820,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'genetics_test': {
     primary: `<h2 class="panel-title">Cetak Biru Genetik Komprehensif untuk Optimasi Kesehatan Personal</h2>
 <div class="panel-body-text">
@@ -876,7 +876,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'nutri': {
     primary: `<h2 class="panel-title">Penilaian Nutrisi Seluler Komprehensif — 40+ Nutrisi</h2>
 <div class="panel-body-text">
@@ -931,7 +931,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  
+
   'auto': {
     primary: `<h2 class="panel-title">Skrining Penyakit Autoimun Komprehensif — 30+ Antibodi Jaringan</h2>
 <div class="panel-body-text">
@@ -992,15 +992,15 @@ const PANEL_CONTENT_ID = {
 
 
 const SUBHOTSPOT_CONTENT_ID = {
-  'neural':        { primary: 'Pola Demielinasi Ringan & Kognitif',                  secondary: 'Ikhtisar Tes' },
-  'neurotrans':    { primary: 'Pola Ketidakseimbangan Neurotransmiter & Mood-Kognitif', secondary: 'Ikhtisar Tes' },
-  'hormone_z':     { primary: 'Pola Osteoporosis Pascamenopause & Defisiensi Hormon', secondary: 'Ikhtisar Tes' },
-  'cardio':        { primary: 'Pola Disfungsi Endotelial & Risiko Kardiovaskular',    secondary: 'Ikhtisar Tes' },
-  'toxins_panel':  { primary: 'Pola Beban Toksin Total & Toksisitas Lingkungan',      secondary: 'Ikhtisar Tes' },
-  'oxi':           { primary: 'Kerusakan Oksidatif Multi-Sistem',                     secondary: 'Ikhtisar Tes' },
-  'food':          { primary: 'Tes Sensitivitas Makanan Komprehensif',                secondary: 'Ikhtisar Tes' },
-  'gutzoomer':     { primary: 'Pola Permeabilitas Usus & Peradangan',                 secondary: 'Ikhtisar Tes' },
-  'genetics_test': { primary: 'Cetak Biru Genetik Komprehensif',                     secondary: 'Ikhtisar Tes' },
-  'nutri':         { primary: 'Penilaian Nutrisi Seluler Komprehensif',               secondary: 'Ikhtisar Tes' },
-  'auto':          { primary: 'Skrining Penyakit Autoimun Komprehensif',              secondary: 'Ikhtisar Tes' },
+  'neural': { primary: 'Pola Demielinasi Ringan & Kognitif', secondary: 'Ikhtisar Tes' },
+  'neurotrans': { primary: 'Pola Ketidakseimbangan Neurotransmiter & Mood-Kognitif', secondary: 'Ikhtisar Tes' },
+  'hormone_z': { primary: 'Pola Osteoporosis Pascamenopause & Defisiensi Hormon', secondary: 'Ikhtisar Tes' },
+  'cardio': { primary: 'Pola Disfungsi Endotelial & Risiko Kardiovaskular', secondary: 'Ikhtisar Tes' },
+  'toxins_panel': { primary: 'Pola Beban Toksin Total & Toksisitas Lingkungan', secondary: 'Ikhtisar Tes' },
+  'oxi': { primary: 'Kerusakan Oksidatif Multi-Sistem', secondary: 'Ikhtisar Tes' },
+  'food': { primary: 'Tes Sensitivitas Makanan Komprehensif', secondary: 'Ikhtisar Tes' },
+  'gutzoomer': { primary: 'Pola Permeabilitas Usus & Peradangan', secondary: 'Ikhtisar Tes' },
+  'genetics_test': { primary: 'Cetak Biru Genetik Komprehensif', secondary: 'Ikhtisar Tes' },
+  'nutri': { primary: 'Penilaian Nutrisi Seluler Komprehensif', secondary: 'Ikhtisar Tes' },
+  'auto': { primary: 'Skrining Penyakit Autoimun Komprehensif', secondary: 'Ikhtisar Tes' },
 };

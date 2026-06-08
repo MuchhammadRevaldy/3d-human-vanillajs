@@ -7,7 +7,7 @@ let currentLang = localStorage.getItem('somalab-lang') || 'en';
 
 const I18N = {
   en: {
-    nav: { home:'Home', about:'About', content:'Content', contact:'Contact', start_explore:'Start 3D Exploration' },
+    nav: { home: 'Home', about: 'About', content: 'Content', contact: 'Contact', start_explore: 'Start 3D Exploration' },
     home: {
       headline: 'Explore Human Anatomy at <span class="highlight">Your Fingertips</span>',
       subtext: 'Interactive 3D visualization provides a profound understanding of the human body. Gain valuable insights into organ systems, identify early biomarkers, and explore complex systemic conditions through our comprehensive, medically-accurate 3D platform.',
@@ -16,8 +16,8 @@ const I18N = {
       discover_title: 'Why Choose SomaLab?',
       discover_sub: 'Our platform goes beyond traditional 2D textbooks, offering an unprecedented level of clinical depth and interactivity.',
       feat1_title: 'Zoom to Cellular Level', feat1_desc: 'Seamlessly transition from macro organ structures to microscopic cellular activity and neurotransmitter pathways.',
-      feat2_title: 'Clinical Biomarkers',    feat2_desc: 'Visualize early signs of oxidative stress, toxins, and autoimmune markers before clinical diagnosis.',
-      feat3_title: 'Accurate Anatomy',       feat3_desc: 'Interact with highly detailed 3D models of the brain, heart, liver, digestive tract, and DNA.',
+      feat2_title: 'Clinical Biomarkers', feat2_desc: 'Visualize early signs of oxidative stress, toxins, and autoimmune markers before clinical diagnosis.',
+      feat3_title: 'Accurate Anatomy', feat3_desc: 'Interact with highly detailed 3D models of the brain, heart, liver, digestive tract, and DNA.',
     },
     about: {
       badge: 'Discover SomaLab',
@@ -44,16 +44,16 @@ const I18N = {
       submit: 'Send Message', hq: 'Headquarters', email_us: 'Email Us', call_us: 'Call Us', hours: 'Mon - Fri, 9:00 AM - 5:00 PM',
     },
     explore: {
-      categories: { neurology:'Neurology', hormones:'Hormones', cardiovascular:'Cardiovascular', toxins:'Toxins', gut_health:'Gut Health', genetics:'Genetics', longevity:'Longevity' },
-      hotspots: { neural:'Neural Zoomer', neurotrans:'Neurotransmitters', hormone_z:'Hormones Zoomer', cardio:'Cardio Zoomer', toxins_panel:'Toxins Panel', food:'Food Sensitivity', gutzoomer:'Gut Zoomer', genetics_test:'Genetics Testing Suite', oxi:'Oxidative Stress', nutri:'Nutrition', auto:'Autoimmunity' },
-      video_labels: { rna_damage:'RNA\nDamage', toxins_load:'Toxins\nLoad', neural_health:'Neural\nHealth', synapse_activity:'Synapse\nActivity', microbiome_flora:'Microbiome\nFlora', arterial_plaque:'Arterial\nPlaque', steroid_pathways:'Steroid\nPathways' },
-      ui: { test_overview:'Test Overview', endothelial:'The Endothelial Dysfunction', metabolic:'The Metabolic Syndrome', intestinal_perm:'The Intestinal Permeability Pattern', estrogen_dom:'The Estrogen Dominance', neurotransmitter:'The Neurotransmitter', hormone_def:'The Hormone Deficiency', tox_burden:'The Total Tox Burden', oxi_damage:'The Multi-System Oxidative Damage', demyelination:'The Mild Demyelination', coming_soon:'Test overview coming soon...' },
+      categories: { neurology: 'Neurology', hormones: 'Hormones', cardiovascular: 'Cardiovascular', toxins: 'Toxins', gut_health: 'Gut Health', genetics: 'Genetics', longevity: 'Longevity' },
+      hotspots: { neural: 'Neural Zoomer', neurotrans: 'Neurotransmitters', hormone_z: 'Hormones Zoomer', cardio: 'Cardio Zoomer', toxins_panel: 'Toxins Panel', food: 'Food Sensitivity', gutzoomer: 'Gut Zoomer', genetics_test: 'Genetics Testing Suite', oxi: 'Oxidative Stress', nutri: 'Nutrition', auto: 'Autoimmunity' },
+      video_labels: { rna_damage: 'RNA\nDamage', toxins_load: 'Toxins\nLoad', neural_health: 'Neural\nHealth', synapse_activity: 'Synapse\nActivity', microbiome_flora: 'Microbiome\nFlora', arterial_plaque: 'Arterial\nPlaque', steroid_pathways: 'Steroid\nPathways' },
+      ui: { test_overview: 'Test Overview', endothelial: 'The Endothelial Dysfunction', metabolic: 'The Metabolic Syndrome', intestinal_perm: 'The Intestinal Permeability Pattern', estrogen_dom: 'The Estrogen Dominance', neurotransmitter: 'The Neurotransmitter', hormone_def: 'The Hormone Deficiency', tox_burden: 'The Total Tox Burden', oxi_damage: 'The Multi-System Oxidative Damage', demyelination: 'The Mild Demyelination', coming_soon: 'Test overview coming soon...' },
       select_system: 'SELECT SYSTEM', explore_cats: 'EXPLORE CATEGORIES', back: 'Back to Overview',
       sound_on: 'SOUND ON', sound_off: 'SOUND OFF', female: 'Female', male: 'Male',
     },
   },
   id: {
-    nav: { home:'Beranda', about:'Tentang', content:'Konten', contact:'Kontak', start_explore:'Mulai Eksplorasi 3D' },
+    nav: { home: 'Beranda', about: 'Tentang', content: 'Konten', contact: 'Kontak', start_explore: 'Mulai Eksplorasi 3D' },
     home: {
       headline: 'Jelajahi Anatomi Manusia di <span class="highlight">Ujung Jari Anda</span>',
       subtext: 'Visualisasi 3D interaktif memberikan pemahaman mendalam tentang tubuh manusia. Dapatkan wawasan berharga tentang sistem organ, identifikasi biomarker awal, dan jelajahi kondisi sistemik kompleks melalui platform 3D komprehensif kami yang akurat secara medis.',
@@ -61,9 +61,9 @@ const I18N = {
       pill1: 'Model Presisi', pill2: 'Sistem Mendalam', pill3: 'Wawasan Klinis',
       discover_title: 'Mengapa Memilih SomaLab?',
       discover_sub: 'Platform kami melampaui buku teks 2D tradisional, menawarkan tingkat kedalaman klinis dan interaktivitas yang belum pernah ada sebelumnya.',
-      feat1_title: 'Zoom ke Level Sel',       feat1_desc: 'Transisi mulus dari struktur organ makro ke aktivitas sel mikroskopis dan jalur neurotransmiter.',
-      feat2_title: 'Biomarker Klinis',         feat2_desc: 'Visualisasikan tanda-tanda awal stres oksidatif, toksin, dan penanda autoimun sebelum diagnosis klinis.',
-      feat3_title: 'Anatomi Akurat',           feat3_desc: 'Berinteraksi dengan model 3D sangat detail dari otak, jantung, hati, saluran pencernaan, dan DNA.',
+      feat1_title: 'Zoom ke Level Sel', feat1_desc: 'Transisi mulus dari struktur organ makro ke aktivitas sel mikroskopis dan jalur neurotransmiter.',
+      feat2_title: 'Biomarker Klinis', feat2_desc: 'Visualisasikan tanda-tanda awal stres oksidatif, toksin, dan penanda autoimun sebelum diagnosis klinis.',
+      feat3_title: 'Anatomi Akurat', feat3_desc: 'Berinteraksi dengan model 3D sangat detail dari otak, jantung, hati, saluran pencernaan, dan DNA.',
     },
     about: {
       badge: 'Temukan SomaLab',
@@ -90,10 +90,10 @@ const I18N = {
       submit: 'Kirim Pesan', hq: 'Kantor Pusat', email_us: 'Email Kami', call_us: 'Hubungi Kami', hours: 'Sen - Jum, 09.00–17.00 WIB',
     },
     explore: {
-      categories: { neurology:'Neurologi', hormones:'Hormon', cardiovascular:'Kardiovaskular', toxins:'Toksin', gut_health:'Kesehatan Usus', genetics:'Genetika', longevity:'Longevitas' },
-      hotspots: { neural:'Neural Zoomer', neurotrans:'Neurotransmiter', hormone_z:'Hormon Zoomer', cardio:'Kardio Zoomer', toxins_panel:'Panel Toksin', food:'Sensitivitas Makanan', gutzoomer:'Usus Zoomer', genetics_test:'Suite Tes Genetika', oxi:'Stres Oksidatif', nutri:'Nutrisi', auto:'Autoimunitas' },
-      video_labels: { rna_damage:'Kerusakan\nRNA', toxins_load:'Beban\nToksin', neural_health:'Kesehatan\nNeural', synapse_activity:'Aktivitas\nSinaps', microbiome_flora:'Flora\nMikrobiom', arterial_plaque:'Plak\nArterial', steroid_pathways:'Jalur\nSteroid' },
-      ui: { test_overview:'Ikhtisar Tes', endothelial:'Disfungsi Endotelial', metabolic:'Sindrom Metabolik', intestinal_perm:'Pola Permeabilitas Usus', estrogen_dom:'Dominasi Estrogen', neurotransmitter:'Neurotransmiter', hormone_def:'Defisiensi Hormon', tox_burden:'Beban Toksin Total', oxi_damage:'Kerusakan Oksidatif Multi-Sistem', demyelination:'Demielinasi Ringan', coming_soon:'Ikhtisar tes segera hadir...' },
+      categories: { neurology: 'Neurologi', hormones: 'Hormon', cardiovascular: 'Kardiovaskular', toxins: 'Toksin', gut_health: 'Kesehatan Usus', genetics: 'Genetika', longevity: 'Longevitas' },
+      hotspots: { neural: 'Neural Zoomer', neurotrans: 'Neurotransmiter', hormone_z: 'Hormon Zoomer', cardio: 'Kardio Zoomer', toxins_panel: 'Panel Toksin', food: 'Sensitivitas Makanan', gutzoomer: 'Usus Zoomer', genetics_test: 'Suite Tes Genetika', oxi: 'Stres Oksidatif', nutri: 'Nutrisi', auto: 'Autoimunitas' },
+      video_labels: { rna_damage: 'Kerusakan\nRNA', toxins_load: 'Beban\nToksin', neural_health: 'Kesehatan\nNeural', synapse_activity: 'Aktivitas\nSinaps', microbiome_flora: 'Flora\nMikrobiom', arterial_plaque: 'Plak\nArterial', steroid_pathways: 'Jalur\nSteroid' },
+      ui: { test_overview: 'Ikhtisar Tes', endothelial: 'Disfungsi Endotelial', metabolic: 'Sindrom Metabolik', intestinal_perm: 'Pola Permeabilitas Usus', estrogen_dom: 'Dominasi Estrogen', neurotransmitter: 'Neurotransmiter', hormone_def: 'Defisiensi Hormon', tox_burden: 'Beban Toksin Total', oxi_damage: 'Kerusakan Oksidatif Multi-Sistem', demyelination: 'Demielinasi Ringan', coming_soon: 'Ikhtisar tes segera hadir...' },
       select_system: 'PILIH SISTEM', explore_cats: 'KATEGORI EKSPLORASI', back: 'Kembali ke Overview',
       sound_on: 'SUARA ON', sound_off: 'SUARA OFF', female: 'Perempuan', male: 'Laki-laki',
     },
@@ -106,7 +106,7 @@ const t = (path) => {
   let val = I18N[currentLang];
   for (const p of parts) { val = val?.[p]; }
   if (val !== undefined) return val;
-  
+
   val = I18N.en;
   for (const p of parts) { val = val?.[p]; }
   return val ?? path;
@@ -129,16 +129,16 @@ function applyLang(lang) {
   localStorage.setItem('somalab-lang', lang);
   document.documentElement.lang = lang;
 
-  
+
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
 
   const L = I18N[lang];
 
-  
-  _setTxt('a.nav-item[data-page="home"]',    L.nav.home);
-  _setTxt('a.nav-item[data-page="about"]',   L.nav.about);
+
+  _setTxt('a.nav-item[data-page="home"]', L.nav.home);
+  _setTxt('a.nav-item[data-page="about"]', L.nav.about);
   _setTxt('a.nav-item[data-page="content"]', L.nav.content);
   _setTxt('a.nav-item[data-page="contact"]', L.nav.contact);
   document.querySelectorAll('.cta-button span:first-child, .btn-primary-large span:first-child').forEach(el => {
@@ -146,7 +146,7 @@ function applyLang(lang) {
   });
   _setTxt('a.btn-secondary-large.spa-link', L.home.learn_more);
 
-  
+
   _setHtml('h1.home-headline', L.home.headline);
   _setTxt('p.home-value-prop', L.home.subtext);
   const pills = document.querySelectorAll('.pill-item');
@@ -158,7 +158,7 @@ function applyLang(lang) {
     pills[i].appendChild(document.createTextNode(' ' + txt));
   });
   _setTxt('.discover-header h2', L.home.discover_title);
-  _setTxt('.discover-header p',  L.home.discover_sub);
+  _setTxt('.discover-header p', L.home.discover_sub);
   const feats = document.querySelectorAll('.feature-box');
   const featData = [
     [L.home.feat1_title, L.home.feat1_desc],
@@ -168,11 +168,11 @@ function applyLang(lang) {
   feats.forEach((fb, i) => {
     if (!featData[i]) return;
     _setTxt(fb.querySelector('h3'), featData[i][0]);
-    _setTxt(fb.querySelector('p'),  featData[i][1]);
+    _setTxt(fb.querySelector('p'), featData[i][1]);
   });
 
-  
-  _setTxt('.about-badge',    L.about.badge);
+
+  _setTxt('.about-badge', L.about.badge);
   _setHtml('h1.about-title', L.about.title);
   _setTxt('p.about-subtitle', L.about.subtitle);
   _setTxt('h2.story-heading', L.about.story_title);
@@ -197,12 +197,12 @@ function applyLang(lang) {
   }
   if (pcards[2]) { _setTxt(pcards[2].querySelector('h3'), L.about.why_title); _setTxt(pcards[2].querySelector('p'), L.about.why_p); }
 
-  
-  _setHtml('h1.content-title',  L.content.title);
+
+  _setHtml('h1.content-title', L.content.title);
   _setTxt('p.content-subtitle', L.content.subtitle);
 
-  
-  _setHtml('h1.contact-title',  L.contact.title);
+
+  _setHtml('h1.contact-title', L.contact.title);
   _setTxt('p.contact-subtitle', L.contact.subtitle);
   const fmHdr = document.querySelector('h2.form-heading');
   if (fmHdr) { const svg = fmHdr.querySelector('svg'); fmHdr.innerHTML = ''; if (svg) fmHdr.appendChild(svg); fmHdr.appendChild(document.createTextNode(' ' + L.contact.form_title)); }
@@ -217,21 +217,21 @@ function applyLang(lang) {
   const hoursEl = document.querySelector('.info-card:last-child p');
   if (hoursEl) hoursEl.innerHTML = `+62 811 2345 6789<br>${L.contact.hours}`;
 
-  
+
   _setTxt('#organ-sidebar .sidebar-title', L.explore.select_system);
-  
+
   const backBtn = document.getElementById('back-zoom-btn');
   if (backBtn) { const svg = backBtn.querySelector('svg'); backBtn.innerHTML = ''; if (svg) backBtn.appendChild(svg); backBtn.appendChild(document.createTextNode(' ' + L.explore.back)); }
-  
+
   const sp = document.getElementById('sound-pill');
   if (sp) sp.textContent = state.explore.soundOn ? L.explore.sound_on : L.explore.sound_off;
-  
+
   _updateSexBtnLabels(L.explore.female, L.explore.male);
-  
+
   const sbCont = document.getElementById('sidebar-buttons');
   if (sbCont) { sbCont._built = false; buildSidebar(); }
 
-  
+
   if (state.explore.activeSubHotspot && typeof showSubPanel === 'function') {
     const activeSubId = state.explore.activeSubHotspot;
     const CATEGORIES_flat = typeof CATEGORIES !== 'undefined'
@@ -239,30 +239,30 @@ function applyLang(lang) {
       : [];
     const subDef = CATEGORIES_flat.find(s => s.id === activeSubId);
     if (subDef) {
-      
+
       setTimeout(() => showSubPanel(activeSubId, subDef), 60);
     }
   }
 }
 
 function _updateSexBtnLabels(female, male) {
-  [['btn-female','mob-female-btn'], female, ['btn-male','mob-male-btn'], male].reduce((_, __, i, arr) => {
+  [['btn-female', 'mob-female-btn'], female, ['btn-male', 'mob-male-btn'], male].reduce((_, __, i, arr) => {
     if (i % 2 !== 0) return;
     const ids = arr[i]; const lbl = arr[i + 1];
     ids.forEach(id => {
       const btn = document.getElementById(id);
       if (!btn) return;
-      
+
       const oldWidth = btn.offsetWidth;
       const svg = btn.querySelector('svg');
-      
+
       btn.innerHTML = '';
       if (svg) btn.appendChild(svg);
       btn.appendChild(document.createTextNode(' ' + lbl));
-      
+
       const newWidth = btn.offsetWidth;
-      
-      
+
+
       if (oldWidth > 0 && newWidth > 0 && oldWidth !== newWidth) {
         btn.animate([
           { width: oldWidth + 'px', overflow: 'hidden' },
@@ -302,45 +302,45 @@ function navigateTo(page) {
   if (!PAGES.includes(page)) page = 'home';
   state.currentPage = page;
 
-  
+
   document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
   const target = document.getElementById(`page-${page}`);
   if (target) target.classList.add('active');
 
-  
+
   const navbar = document.getElementById('navbar');
   if (navbar) navbar.classList.toggle('hidden', page === 'explore');
 
-  
+
   const langFloat = document.getElementById('lang-float');
   if (langFloat) langFloat.classList.toggle('hidden', page === 'explore');
 
 
-  
+
   document.querySelectorAll('.nav-item').forEach(el => {
     el.classList.toggle('active', el.dataset.page === page);
   });
 
-  
+
   closeMobileMenu();
 
-  
+
   window.scrollTo(0, 0);
 
-  
+
   if (page === 'home') initHome();
-  else if (page === 'about') {  }
+  else if (page === 'about') { }
   else if (page === 'content') initContent();
   else if (page === 'contact') initContact();
   else if (page === 'explore') initExplore();
 
-  
+
   injectFooter(page);
 
-  
+
   setTimeout(() => triggerReveal(), 100);
 
-  
+
   history.replaceState(null, '', `#${page}`);
 }
 
@@ -397,7 +397,7 @@ function triggerReveal() {
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   items.forEach(item => observer.observe(item));
-  
+
   setTimeout(() => {
     items.forEach(item => {
       const rect = item.getBoundingClientRect();
@@ -421,7 +421,7 @@ function initParticles() {
   canvas.width = canvas.parentElement.offsetWidth;
   canvas.height = canvas.parentElement.offsetHeight;
 
-  const particles = Array.from({length: 60}, () => ({
+  const particles = Array.from({ length: 60 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     r: Math.random() * 2.5 + 0.5,
@@ -518,16 +518,16 @@ function initHome3D() {
 
 
 const ARTICLES = [
-  { id:1, title:'Cardiovascular Longevity', category:'Heart Health', icon:'❤️', color:'#ff3366', shortDesc:'Advanced protocols for maintaining arterial elasticity and heart muscle resilience across your lifespan.', content:'The human heart beats around 100,000 times a day, pumping blood through a vast network of vessels. To maintain cardiovascular health, focus on a diet rich in omega-3 fatty acids, fiber, and antioxidants. Regular aerobic exercise (like brisk walking or swimming) for at least 150 minutes a week strengthens the heart muscle. Additionally, managing stress through mindfulness and getting 7-9 hours of sleep are crucial for preventing endothelial dysfunction and high blood pressure.', bentoClass:'bento-hero' },
-  { id:2, title:'Neuroplasticity', category:'Brain Systems', icon:'🧠', color:'#a855f7', shortDesc:'Biohack your brain for sustained focus.', content:'Your nervous system is the body\'s command center. Protecting your nervous system involves consuming brain-boosting nutrients like vitamins B6 and B12, challenging your brain with new learning activities to build neuroplasticity, and avoiding neurotoxins like excessive alcohol. Chronic stress can lead to neuroinflammation, so daily relaxation techniques are vital.', bentoClass:'bento-square-small' },
-  { id:3, title:'Genetics & DNA', category:'Cellular Health', icon:'🧬', color:'#3b82f6', shortDesc:'Understanding the building blocks of life and how to protect your telomeres.', content:'Your DNA contains the instructions for every cell in your body. Protecting your genetics means minimizing DNA damage from oxidative stress. Antioxidant-rich foods, minimizing exposure to environmental toxins and UV radiation, and maintaining metabolic health are key. Fasting or caloric restriction mimetics can trigger autophagy, the body\'s way of clearing out damaged cells and repairing DNA.', bentoClass:'bento-tall' },
-  { id:4, title:'Gut Microbiome', category:'Digestive System', icon:'🦠', color:'#10b981', shortDesc:'A vital connection between your gut bacteria and immunity.', content:'The gut microbiome consists of trillions of bacteria that play a profound role in digestion, immunity, and even mood regulation. To support a healthy gut, consume a diverse range of plant-based foods, which provide prebiotics. Fermented foods like yogurt, kefir, and kimchi introduce beneficial probiotics. Limit processed foods and refined sugars, which can promote the growth of harmful bacteria.', bentoClass:'bento-square-small' },
-  { id:5, title:'Renal Function & Filtration', category:'Detoxification', icon:'💧', color:'#f59e0b', shortDesc:'Supporting your body\'s natural filtration systems.', content:'The liver and kidneys are your body\'s primary detoxification organs. The liver processes nutrients and neutralizes harmful substances, while the kidneys filter waste from the blood to produce urine. You can maintain their health by drinking plenty of water, limiting sodium intake, and eating antioxidant-rich foods like berries and dark leafy greens.', bentoClass:'bento-wide' },
-  { id:6, title:'Cellular Immunity', category:'Defense System', icon:'🛡️', color:'#0ea5e9', shortDesc:'Building an impenetrable fortress against pathogens and oxidative stress.', content:'A robust immune system relies on a delicate balance of white blood cells, antibodies, and cellular defense mechanisms. High levels of oxidative stress can impair immune function. Combat this with a diet high in vitamins C, D, and E, as well as zinc. Adequate sleep and routine exercise promote the efficient circulation of immune cells.', bentoClass:'bento-wide' },
-  { id:7, title:'Respiratory Health', category:'Pulmonary System', icon:'💨', color:'#06b6d4', shortDesc:'Optimize your lung capacity and oxygenation for peak energy levels and sustained vitality.', content:'The lungs are responsible for oxygenating every cell in your body. Practices like diaphragmatic breathing can increase lung capacity and reduce activation of the stress response. Exposure to clean air, avoiding pollutants, and regular cardio training are key.', bentoClass:'bento-hero' },
-  { id:8, title:'Musculoskeletal System', category:'Structural Health', icon:'🦴', color:'#f97316', shortDesc:'Build a resilient framework of bones and muscles for lifelong strength and mobility.', content:'Your bones and muscles form the structural foundation of your body. To maintain musculoskeletal health, prioritize resistance training (2–4x/week) which promotes bone density and combats sarcopenia. Collagen synthesis for cartilage health depends on vitamin C and adequate protein intake.', bentoClass:'bento-tall' },
-  { id:9, title:'Hormonal Balance', category:'Endocrine System', icon:'⚗️', color:'#ec4899', shortDesc:'Regulate your body\'s chemical messengers to master metabolism and mood.', content:'The endocrine system governs hormones—chemical messengers that control metabolism, growth, mood, and reproduction. Key lifestyle factors for hormonal balance include managing cortisol (the stress hormone) through sleep and mindfulness, maintaining healthy blood sugar to keep insulin stable.', bentoClass:'bento-square-small' },
-  { id:10, title:'Sleep & Recovery', category:'Restorative Health', icon:'🌙', color:'#6366f1', shortDesc:'Master the science of sleep for cellular repair, memory, and longevity.', content:'Sleep is where the brain consolidates memories, the body repairs tissues, and the glymphatic system flushes out metabolic waste. Optimal sleep (7–9 hours) requires a consistent schedule, a dark and cool environment, and minimizing blue light exposure.', bentoClass:'bento-square-small' },
+  { id: 1, title: 'Cardiovascular Longevity', category: 'Heart Health', icon: '❤️', color: '#ff3366', shortDesc: 'Advanced protocols for maintaining arterial elasticity and heart muscle resilience across your lifespan.', content: 'The human heart beats around 100,000 times a day, pumping blood through a vast network of vessels. To maintain cardiovascular health, focus on a diet rich in omega-3 fatty acids, fiber, and antioxidants. Regular aerobic exercise (like brisk walking or swimming) for at least 150 minutes a week strengthens the heart muscle. Additionally, managing stress through mindfulness and getting 7-9 hours of sleep are crucial for preventing endothelial dysfunction and high blood pressure.', bentoClass: 'bento-hero' },
+  { id: 2, title: 'Neuroplasticity', category: 'Brain Systems', icon: '🧠', color: '#a855f7', shortDesc: 'Biohack your brain for sustained focus.', content: 'Your nervous system is the body\'s command center. Protecting your nervous system involves consuming brain-boosting nutrients like vitamins B6 and B12, challenging your brain with new learning activities to build neuroplasticity, and avoiding neurotoxins like excessive alcohol. Chronic stress can lead to neuroinflammation, so daily relaxation techniques are vital.', bentoClass: 'bento-square-small' },
+  { id: 3, title: 'Genetics & DNA', category: 'Cellular Health', icon: '🧬', color: '#3b82f6', shortDesc: 'Understanding the building blocks of life and how to protect your telomeres.', content: 'Your DNA contains the instructions for every cell in your body. Protecting your genetics means minimizing DNA damage from oxidative stress. Antioxidant-rich foods, minimizing exposure to environmental toxins and UV radiation, and maintaining metabolic health are key. Fasting or caloric restriction mimetics can trigger autophagy, the body\'s way of clearing out damaged cells and repairing DNA.', bentoClass: 'bento-tall' },
+  { id: 4, title: 'Gut Microbiome', category: 'Digestive System', icon: '🦠', color: '#10b981', shortDesc: 'A vital connection between your gut bacteria and immunity.', content: 'The gut microbiome consists of trillions of bacteria that play a profound role in digestion, immunity, and even mood regulation. To support a healthy gut, consume a diverse range of plant-based foods, which provide prebiotics. Fermented foods like yogurt, kefir, and kimchi introduce beneficial probiotics. Limit processed foods and refined sugars, which can promote the growth of harmful bacteria.', bentoClass: 'bento-square-small' },
+  { id: 5, title: 'Renal Function & Filtration', category: 'Detoxification', icon: '💧', color: '#f59e0b', shortDesc: 'Supporting your body\'s natural filtration systems.', content: 'The liver and kidneys are your body\'s primary detoxification organs. The liver processes nutrients and neutralizes harmful substances, while the kidneys filter waste from the blood to produce urine. You can maintain their health by drinking plenty of water, limiting sodium intake, and eating antioxidant-rich foods like berries and dark leafy greens.', bentoClass: 'bento-wide' },
+  { id: 6, title: 'Cellular Immunity', category: 'Defense System', icon: '🛡️', color: '#0ea5e9', shortDesc: 'Building an impenetrable fortress against pathogens and oxidative stress.', content: 'A robust immune system relies on a delicate balance of white blood cells, antibodies, and cellular defense mechanisms. High levels of oxidative stress can impair immune function. Combat this with a diet high in vitamins C, D, and E, as well as zinc. Adequate sleep and routine exercise promote the efficient circulation of immune cells.', bentoClass: 'bento-wide' },
+  { id: 7, title: 'Respiratory Health', category: 'Pulmonary System', icon: '💨', color: '#06b6d4', shortDesc: 'Optimize your lung capacity and oxygenation for peak energy levels and sustained vitality.', content: 'The lungs are responsible for oxygenating every cell in your body. Practices like diaphragmatic breathing can increase lung capacity and reduce activation of the stress response. Exposure to clean air, avoiding pollutants, and regular cardio training are key.', bentoClass: 'bento-hero' },
+  { id: 8, title: 'Musculoskeletal System', category: 'Structural Health', icon: '🦴', color: '#f97316', shortDesc: 'Build a resilient framework of bones and muscles for lifelong strength and mobility.', content: 'Your bones and muscles form the structural foundation of your body. To maintain musculoskeletal health, prioritize resistance training (2–4x/week) which promotes bone density and combats sarcopenia. Collagen synthesis for cartilage health depends on vitamin C and adequate protein intake.', bentoClass: 'bento-tall' },
+  { id: 9, title: 'Hormonal Balance', category: 'Endocrine System', icon: '⚗️', color: '#ec4899', shortDesc: 'Regulate your body\'s chemical messengers to master metabolism and mood.', content: 'The endocrine system governs hormones—chemical messengers that control metabolism, growth, mood, and reproduction. Key lifestyle factors for hormonal balance include managing cortisol (the stress hormone) through sleep and mindfulness, maintaining healthy blood sugar to keep insulin stable.', bentoClass: 'bento-square-small' },
+  { id: 10, title: 'Sleep & Recovery', category: 'Restorative Health', icon: '🌙', color: '#6366f1', shortDesc: 'Master the science of sleep for cellular repair, memory, and longevity.', content: 'Sleep is where the brain consolidates memories, the body repairs tissues, and the glymphatic system flushes out metabolic waste. Optimal sleep (7–9 hours) requires a consistent schedule, a dark and cool environment, and minimizing blue light exposure.', bentoClass: 'bento-square-small' },
 ];
 
 function initContent() {
@@ -539,7 +539,7 @@ function initContent() {
     <div class="bento-card ${art.bentoClass}" data-id="${art.id}" tabindex="0" role="button">
       <div class="bento-card-content">
         <div class="bento-card-header">
-          <div class="bento-icon-box" style="font-size:${art.bentoClass==='bento-hero'?'28px':'24px'}">${art.icon}</div>
+          <div class="bento-icon-box" style="font-size:${art.bentoClass === 'bento-hero' ? '28px' : '24px'}">${art.icon}</div>
           <span class="bento-category" style="color:${art.color}">${art.category}</span>
         </div>
         <div class="bento-text-body">
@@ -561,7 +561,7 @@ function initContent() {
     if (art) openArticleModal(art);
   });
 
-  
+
   document.getElementById('modal-close-btn')?.addEventListener('click', closeModal);
   document.getElementById('modal-backdrop')?.addEventListener('click', closeModal);
 }
@@ -607,65 +607,79 @@ function initContact() {
 
 
 const CATEGORIES = [
-  { id:'neurology', label:'Neurology', icon:'🧠', position:[0,1.75,0.05], shows:['brain'], zoomOffset:1.0, subHotspots:[
-    { id:'neural', label:'Neural Zoomer', position:[0.08,1.83,0.15], focusOrgan:'brain' },
-    { id:'neurotrans', label:'Neurotransmitters', position:[0.08,1.71,0.15], focusOrgan:'brain' }
-  ]},
-  { id:'hormones', label:'Hormones', icon:'♂️', position:[0,1.21,0.04], shows:['brain','kidney'], zoomOffset:4.8, subHotspots:[
-    { id:'hormone_z', label:'Hormones Zoomer', position:[0.12,1.65,0.15], focusOrgan:'brain' }
-  ]},
-  { id:'cardiovascular', label:'Cardiovascular', icon:'🤍', position:[0,1.1,0.10], shows:['heart'], zoomOffset:1.0, subHotspots:[
-    { id:'cardio', label:'Cardio Zoomer', position:[0.08,1.15,0.15], focusOrgan:'heart' }
-  ]},
-  { id:'toxins', label:'Toxins', icon:'🧪', position:[-0.07,0.90,0.1], shows:['liver','kidney'], zoomOffset:1.0, subHotspots:[
-    { id:'toxins_panel', label:'Toxins Panel', position:[-0.15,0.72,0.15], focusOrgan:'liver' }
-  ]},
-  { id:'gut_health', label:'Gut Health', icon:'🦠', position:[-0.05,0.65,0.1], shows:['intestine','kidney','liver'], zoomOffset:2, subHotspots:[
-    { id:'food', label:'Food Sensitivity', position:[-0.05,0.82,0.12], focusOrgan:'intestine' },
-    { id:'gutzoomer', label:'Gut Zoomer', position:[0.08,0.65,0.12], focusOrgan:'intestine' }
-  ]},
-  { id:'genetics', label:'Genetics', icon:'🧬', position:[-0.50,0.85,-0.1], shows:['dna'], zoomOffset:0.65, subHotspots:[
-    { id:'genetics_test', label:'Genetics Testing Suite', position:[-0.58,0.85,-0.13], focusOrgan:'dna' }
-  ]},
-  { id:'longevity', label:'Longevity', icon:'🧫', position:[0.55,0.85,0.0], shows:['cell'], zoomOffset:0.25, subHotspots:[
-    { id:'oxi', label:'Oxidative Stress', position:[0.54,0.85,0.08], focusOrgan:'cell' },
-    { id:'nutri', label:'Nutrition', position:[0.53,0.83,0.08], focusOrgan:'cell' },
-    { id:'auto', label:'Autoimmunity', position:[0.55,0.81,0.08], focusOrgan:'cell' }
-  ]},
+  {
+    id: 'neurology', label: 'Neurology', icon: '🧠', position: [0, 1.75, 0.05], shows: ['brain'], zoomOffset: 1.0, subHotspots: [
+      { id: 'neural', label: 'Neural Zoomer', position: [0.08, 1.83, 0.15], focusOrgan: 'brain' },
+      { id: 'neurotrans', label: 'Neurotransmitters', position: [0.08, 1.71, 0.15], focusOrgan: 'brain' }
+    ]
+  },
+  {
+    id: 'hormones', label: 'Hormones', icon: '♂️', position: [0, 1.21, 0.04], shows: ['brain', 'kidney'], zoomOffset: 4.8, subHotspots: [
+      { id: 'hormone_z', label: 'Hormones Zoomer', position: [0.12, 1.65, 0.15], focusOrgan: 'brain' }
+    ]
+  },
+  {
+    id: 'cardiovascular', label: 'Cardiovascular', icon: '🤍', position: [0, 1.1, 0.10], shows: ['heart'], zoomOffset: 1.0, subHotspots: [
+      { id: 'cardio', label: 'Cardio Zoomer', position: [0.08, 1.15, 0.15], focusOrgan: 'heart' }
+    ]
+  },
+  {
+    id: 'toxins', label: 'Toxins', icon: '🧪', position: [-0.07, 0.90, 0.1], shows: ['liver', 'kidney'], zoomOffset: 1.0, subHotspots: [
+      { id: 'toxins_panel', label: 'Toxins Panel', position: [-0.15, 0.72, 0.15], focusOrgan: 'liver' }
+    ]
+  },
+  {
+    id: 'gut_health', label: 'Gut Health', icon: '🦠', position: [-0.05, 0.65, 0.1], shows: ['intestine', 'kidney', 'liver'], zoomOffset: 2, subHotspots: [
+      { id: 'food', label: 'Food Sensitivity', position: [-0.05, 0.82, 0.12], focusOrgan: 'intestine' },
+      { id: 'gutzoomer', label: 'Gut Zoomer', position: [0.08, 0.65, 0.12], focusOrgan: 'intestine' }
+    ]
+  },
+  {
+    id: 'genetics', label: 'Genetics', icon: '🧬', position: [-0.50, 0.85, -0.1], shows: ['dna'], zoomOffset: 0.65, subHotspots: [
+      { id: 'genetics_test', label: 'Genetics Testing Suite', position: [-0.58, 0.85, -0.13], focusOrgan: 'dna' }
+    ]
+  },
+  {
+    id: 'longevity', label: 'Longevity', icon: '🧫', position: [0.55, 0.85, 0.0], shows: ['cell'], zoomOffset: 0.25, subHotspots: [
+      { id: 'oxi', label: 'Oxidative Stress', position: [0.54, 0.85, 0.08], focusOrgan: 'cell' },
+      { id: 'nutri', label: 'Nutrition', position: [0.53, 0.83, 0.08], focusOrgan: 'cell' },
+      { id: 'auto', label: 'Autoimmunity', position: [0.55, 0.81, 0.08], focusOrgan: 'cell' }
+    ]
+  },
 ];
 
 const ORGAN_MODELS = [
-  { id:'brain', file:'public/models/human-brain.glb', position:[0,1.75,0.05], scale:0.15, rotation:[0,-1.5,0], color:'#ff66c4', emissive:'#ff2288' },
-  { id:'heart', file:'public/models/realistic_human_heart.glb', position:[0,1.1,0.10], scale:0.15, color:'#aa1144', emissive:'#ff5588' },
-  { id:'liver', file:'public/models/human_liver_and_gallbladder.glb', position:[-0.07,0.80,0.1], rotation:[0,-1.5,0], scale:1, color:'#dd3366', emissive:'#ff77aa' },
-  { id:'kidney', file:'public/models/human_kidney.glb', position:[0,0.67,0.04], scale:0.1, color:'#550000', emissive:'#880011' },
-  { id:'intestine', file:'public/models/small_and_large_intestine.glb', position:[-0.16,0.45,0.1], scale:0.3, color:'#aa1144', emissive:'#ff5588' },
-  { id:'dna', file:'public/models/dna.glb', position:[-0.50,0.85,-0.13], rotation:[0.6,0.75,1.4], scale:0.00007, color:'#ff2288', emissive:'#ff44aa' },
-  { id:'cell', file:'public/models/eukaryotic_cell.glb', position:[0.55,0.85,0.0], rotation:[0,1.5,1.5], scale:0.06, color:'#0044ff', emissive:'#0088ff' },
+  { id: 'brain', file: 'public/models/human-brain.glb', position: [0, 1.75, 0.05], scale: 0.15, rotation: [0, -1.5, 0], color: '#ff66c4', emissive: '#ff2288' },
+  { id: 'heart', file: 'public/models/realistic_human_heart.glb', position: [0, 1.1, 0.10], scale: 0.15, color: '#aa1144', emissive: '#ff5588' },
+  { id: 'liver', file: 'public/models/human_liver_and_gallbladder.glb', position: [-0.07, 0.80, 0.1], rotation: [0, -1.5, 0], scale: 1, color: '#dd3366', emissive: '#ff77aa' },
+  { id: 'kidney', file: 'public/models/human_kidney.glb', position: [0, 0.67, 0.04], scale: 0.1, color: '#550000', emissive: '#880011' },
+  { id: 'intestine', file: 'public/models/small_and_large_intestine.glb', position: [-0.16, 0.45, 0.1], scale: 0.3, color: '#aa1144', emissive: '#ff5588' },
+  { id: 'dna', file: 'public/models/dna.glb', position: [-0.50, 0.85, -0.13], rotation: [0.6, 0.75, 1.4], scale: 0.00007, color: '#ff2288', emissive: '#ff44aa' },
+  { id: 'cell', file: 'public/models/eukaryotic_cell.glb', position: [0.55, 0.85, 0.0], rotation: [0, 1.5, 1.5], scale: 0.06, color: '#0044ff', emissive: '#0088ff' },
 ];
 
 const VIDEO_MAP = {
-  'oxi': { src:'public/models/OxidativeStressV03.mp4', label:'RNA\nDamage' },
-  'toxins_panel': { src:'public/models/ToxinsV03.mp4', label:'Toxins\nLoad' },
-  'neural': { src:'public/models/NeuralHealthV03.mp4', label:'Neural\nHealth' },
-  'neurotrans': { src:'public/models/Neurotransmiters.mp4', label:'Synapse\nActivity' },
-  'gutzoomer': { src:'public/models/MasterGutZoomerV03.mp4', label:'Microbiome\nFlora' },
-  'cardio': { src:'public/models/CardioZoomerNew.mp4', label:'Arterial\nPlaque' },
-  'hormone_z': { src:'public/models/Hormones3D.mp4', label:'Steroid\nPathways' },
+  'oxi': { src: 'public/models/OxidativeStressV03.mp4', label: 'RNA\nDamage' },
+  'toxins_panel': { src: 'public/models/ToxinsV03.mp4', label: 'Toxins\nLoad' },
+  'neural': { src: 'public/models/NeuralHealthV03.mp4', label: 'Neural\nHealth' },
+  'neurotrans': { src: 'public/models/Neurotransmiters.mp4', label: 'Synapse\nActivity' },
+  'gutzoomer': { src: 'public/models/MasterGutZoomerV03.mp4', label: 'Microbiome\nFlora' },
+  'cardio': { src: 'public/models/CardioZoomerNew.mp4', label: 'Arterial\nPlaque' },
+  'hormone_z': { src: 'public/models/Hormones3D.mp4', label: 'Steroid\nPathways' },
 };
 
 const SUBHOTSPOT_CONTENT = {
-  'neural': { primary:'The Mild Demyelination & Cognitive Pattern', secondary:'Test Overview' },
-  'neurotrans': { primary:'The Neurotransmitter Imbalance & Mood-Cognitive Pattern', secondary:'Test Overview' },
-  'hormone_z': { primary:'The Postmenopausal Bone Loss & Hormone Deficiency Pattern', secondary:'Test Overview' },
-  'cardio': { primary:'The Endothelial Dysfunction & Cardiovascular Risk Pattern', secondary:'Test Overview' },
-  'toxins_panel': { primary:'The Total Tox Burden & Environmental Toxicity Pattern', secondary:'Test Overview' },
-  'oxi': { primary:'The Multi-System Oxidative Damage', secondary:'Test Overview' },
-  'food': { primary:'Comprehensive Food Sensitivity Testing — 209 Foods & 57 Additives', secondary:'Test Overview' },
-  'gutzoomer': { primary:'The Intestinal Permeability & Inflammation Pattern', secondary:'Test Overview' },
-  'genetics_test': { primary:'Comprehensive Genetic Blueprint for Personalized Health Optimization', secondary:'Test Overview' },
-  'nutri': { primary:'Comprehensive Cellular Nutrition Assessment — 40+ Nutrients', secondary:'Test Overview' },
-  'auto': { primary:'Comprehensive Autoimmune Disease Screen — 30+ Tissue Antibodies', secondary:'Test Overview' },
+  'neural': { primary: 'The Mild Demyelination & Cognitive Pattern', secondary: 'Test Overview' },
+  'neurotrans': { primary: 'The Neurotransmitter Imbalance & Mood-Cognitive Pattern', secondary: 'Test Overview' },
+  'hormone_z': { primary: 'The Postmenopausal Bone Loss & Hormone Deficiency Pattern', secondary: 'Test Overview' },
+  'cardio': { primary: 'The Endothelial Dysfunction & Cardiovascular Risk Pattern', secondary: 'Test Overview' },
+  'toxins_panel': { primary: 'The Total Tox Burden & Environmental Toxicity Pattern', secondary: 'Test Overview' },
+  'oxi': { primary: 'The Multi-System Oxidative Damage', secondary: 'Test Overview' },
+  'food': { primary: 'Comprehensive Food Sensitivity Testing — 209 Foods & 57 Additives', secondary: 'Test Overview' },
+  'gutzoomer': { primary: 'The Intestinal Permeability & Inflammation Pattern', secondary: 'Test Overview' },
+  'genetics_test': { primary: 'Comprehensive Genetic Blueprint for Personalized Health Optimization', secondary: 'Test Overview' },
+  'nutri': { primary: 'Comprehensive Cellular Nutrition Assessment — 40+ Nutrients', secondary: 'Test Overview' },
+  'auto': { primary: 'Comprehensive Autoimmune Disease Screen — 30+ Tissue Antibodies', secondary: 'Test Overview' },
 };
 
 const PANEL_CONTENT = {
@@ -1860,7 +1874,7 @@ function initExplore() {
   buildHotspots();
   bindExploreUI();
 
-  
+
   setTimeout(() => {
     if (typeof THREE === 'undefined') {
       console.warn('Three.js not loaded');
@@ -1870,7 +1884,7 @@ function initExplore() {
     initCrosshair();
   }, 100);
 
-  
+
   const splash = document.getElementById('splash-overlay');
   setTimeout(() => {
     if (splash) splash.classList.add('hidden');
@@ -1888,7 +1902,7 @@ function initExploreThree() {
   exploreCamera = new THREE.PerspectiveCamera(38, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 100);
   exploreCamera.position.set(0, 0.4, 5.0);
 
-  exploreRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference:'high-performance', stencil:false });
+  exploreRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance', stencil: false });
   exploreRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   exploreRenderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
   exploreRenderer.outputEncoding = THREE.sRGBEncoding;
@@ -1909,13 +1923,13 @@ function initExploreThree() {
   exploreControls.maxPolarAngle = Math.PI * 0.9;
   exploreControls.minDistance = 0.15;
   exploreControls.maxDistance = 3.8;
-  exploreControls.autoRotate = false;   
+  exploreControls.autoRotate = false;
   exploreControls.autoRotateSpeed = 0;
   exploreControls.target.set(0, 0.8, 0);
 
   exploreClock = new THREE.Clock();
 
-  
+
   const loader = new THREE.GLTFLoader();
   const bodyGroup = new THREE.Group();
   bodyGroup.name = 'body-group';
@@ -1932,7 +1946,7 @@ function initExploreThree() {
             emissiveIntensity: 0.18,
             roughness: 0.35,
             metalness: 0.35,
-            
+
             transparent: true, opacity: 0.0,
             clearcoat: 1.0, clearcoatRoughness: 0.08,
             side: THREE.FrontSide, depthWrite: false,
@@ -1942,17 +1956,17 @@ function initExploreThree() {
       s.scale.set(scale[0], scale[1], scale[2]);
       s.position.set(0, posY, 0);
       s.name = modelId;
-      s.visible = true; 
+      s.visible = true;
       bodyGroup.add(s);
       loadedModels[modelId] = s;
     });
   }
 
-  
-  loadBodyModel('public/models/female_base_mesh (1).glb', [2.25,2.25,2.25], -1.9, '#8aaacf', '#4466aa', 'female');
-  loadBodyModel('public/models/male_base_mesh.glb',        [0.13,0.12,0.13], -1.6, '#7799bb', '#3355aa', 'male');
 
-  
+  loadBodyModel('public/models/female_base_mesh (1).glb', [2.25, 2.25, 2.25], -1.9, '#8aaacf', '#4466aa', 'female');
+  loadBodyModel('public/models/male_base_mesh.glb', [0.13, 0.12, 0.13], -1.6, '#7799bb', '#3355aa', 'male');
+
+
   ORGAN_MODELS.forEach(organ => {
     loader.load(organ.file, (gltf) => {
       const s = gltf.scene.clone(true);
@@ -1972,7 +1986,7 @@ function initExploreThree() {
     });
   });
 
-  
+
   window.addEventListener('resize', () => {
     if (!exploreRenderer) return;
     const w = canvas.parentElement.offsetWidth;
@@ -1982,27 +1996,27 @@ function initExploreThree() {
     exploreRenderer.setSize(w, h);
   });
 
-  
+
   const exploreWrapper = document.getElementById('explore-wrapper');
   exploreWrapper?.addEventListener('mousemove', (e) => {
-    
-    mouse.x = (e.clientX / window.innerWidth  - 0.5) * 2;
+
+    mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
     mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
   });
-  
+
   exploreWrapper?.addEventListener('mouseleave', () => {
     mouse.x = 0;
     mouse.y = 0;
   });
 
-  
+
   function animateExplore() {
     if (state.currentPage !== 'explore') return;
     exploreAnimId = requestAnimationFrame(animateExplore);
     const delta = exploreClock.getDelta();
     const elapsed = exploreClock.getElapsedTime();
 
-    
+
     const lerpFactor = 0.045;
     smoothMouse.x += (mouse.x - smoothMouse.x) * lerpFactor;
     smoothMouse.y += (mouse.y - smoothMouse.y) * lerpFactor;
@@ -2010,36 +2024,36 @@ function initExploreThree() {
     const isZoomed = !!state.explore.activeOrgan;
 
     if (isZoomed) {
-      
-      const pX = smoothMouse.x  * 0.12;
+
+      const pX = smoothMouse.x * 0.12;
       const pY = -smoothMouse.y * 0.06;
       const zoomTarget = targetCamPos.clone().add(new THREE.Vector3(pX, pY, 0));
       exploreCamera.position.lerp(zoomTarget, 0.08);
       exploreControls.target.lerp(targetLookAt, 0.08);
 
     } else {
-      
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
+
       const orbitCenter = new THREE.Vector3(0, 0.8, 0);
-      const orbitRadius  = 5.0;               
+      const orbitRadius = 5.0;
 
-      
-      const baseTheta =  0;                   
-      const basePhi   =  Math.PI / 2 + 0.08; 
 
-      
-      const thetaOffset = smoothMouse.x * 0.35;   
-      const phiOffset   = smoothMouse.y * 0.21;   
+      const baseTheta = 0;
+      const basePhi = Math.PI / 2 + 0.08;
+
+
+      const thetaOffset = smoothMouse.x * 0.35;
+      const phiOffset = smoothMouse.y * 0.21;
 
       const theta = baseTheta + thetaOffset;
-      const phi   = Math.max(0.15, Math.min(Math.PI - 0.15, basePhi + phiOffset));
+      const phi = Math.max(0.15, Math.min(Math.PI - 0.15, basePhi + phiOffset));
 
-      
+
       const targetX = orbitCenter.x + orbitRadius * Math.sin(phi) * Math.sin(theta);
       const targetY = orbitCenter.y + orbitRadius * Math.cos(phi);
       const targetZ = orbitCenter.z + orbitRadius * Math.sin(phi) * Math.cos(theta);
@@ -2047,7 +2061,7 @@ function initExploreThree() {
       const orbitPos = new THREE.Vector3(targetX, targetY, targetZ);
       exploreCamera.position.lerp(orbitPos, 0.06);
 
-      
+
       exploreControls.target.set(
         smoothMouse.x * 0.04,
         0.8 - smoothMouse.y * 0.03,
@@ -2055,22 +2069,22 @@ function initExploreThree() {
       );
     }
 
-    
+
     paralBlobsCSS(smoothMouse.x, smoothMouse.y);
 
-    
-    
+
+
     const BODY_FADE_SPEED = 0.29;
-    const BODY_TARGET_OP  = 0.58;          
+    const BODY_TARGET_OP = 0.58;
     ['female', 'male'].forEach(modelId => {
       const mesh = loadedModels[modelId];
       if (!mesh) return;
       const isSelected = state.explore.sex === modelId;
-      const targetOp   = isSelected ? BODY_TARGET_OP : 0.0;
+      const targetOp = isSelected ? BODY_TARGET_OP : 0.0;
       let maxOp = 0;
       mesh.traverse(c => {
         if (!c.isMesh || !c.material) return;
-        const cur  = c.material.opacity;
+        const cur = c.material.opacity;
         const diff = targetOp - cur;
         if (Math.abs(diff) > 0.002) {
           const step = Math.sign(diff) * Math.min(Math.abs(diff), BODY_FADE_SPEED * delta);
@@ -2082,20 +2096,20 @@ function initExploreThree() {
       mesh.visible = maxOp > 0.005;
     });
 
-    
+
     updateHotspotPositions();
     updateSubHotspotPositions();
 
-    
+
     ORGAN_MODELS.forEach(organ => {
       const entry = loadedModels[`organ-${organ.id}`];
       if (!entry) return;
-      const cat    = CATEGORIES.find(c => c.id === state.explore.activeOrgan);
+      const cat = CATEGORIES.find(c => c.id === state.explore.activeOrgan);
       const hovCat = CATEGORIES.find(c => c.id === state.explore.hoveredOrgan);
-      const shouldShow = (cat  && cat.shows?.includes(organ.id))
-                      || (hovCat && hovCat.shows?.includes(organ.id));
+      const shouldShow = (cat && cat.shows?.includes(organ.id))
+        || (hovCat && hovCat.shows?.includes(organ.id));
       const isActive = cat && cat.shows?.includes(organ.id);
-      const targetOpacity     = shouldShow ? 0.9 : 0.0;
+      const targetOpacity = shouldShow ? 0.9 : 0.0;
       const targetEmissiveInt = isActive
         ? (0.5 + 0.5 * Math.sin(elapsed * 2.0)) * 1.5
         : (shouldShow ? 1.2 : 0.0);
@@ -2104,9 +2118,9 @@ function initExploreThree() {
         if (!c.isMesh) return;
         const m = c.material;
         if (!m) return;
-        m.opacity          = THREE.MathUtils.lerp(m.opacity,          targetOpacity,     0.12);
+        m.opacity = THREE.MathUtils.lerp(m.opacity, targetOpacity, 0.12);
         m.emissiveIntensity = THREE.MathUtils.lerp(m.emissiveIntensity, targetEmissiveInt, 0.12);
-        m.color.lerp(new THREE.Color(organ.color),   0.12);
+        m.color.lerp(new THREE.Color(organ.color), 0.12);
         m.emissive.lerp(new THREE.Color(organ.emissive), 0.12);
         m.depthWrite = shouldShow;
         m.needsUpdate = true;
@@ -2123,21 +2137,21 @@ function initExploreThree() {
 
 
 function paralBlobsCSS(mx, my) {
-  
-  
+
+
   const layers = [
-    { sel: '.blob-1', sx: 28, sy: 18 },  
+    { sel: '.blob-1', sx: 28, sy: 18 },
     { sel: '.blob-2', sx: 18, sy: 12 },
-    { sel: '.blob-3', sx:  9, sy:  6 },
+    { sel: '.blob-3', sx: 9, sy: 6 },
     { sel: '.blob-4', sx: 14, sy: 10 },
   ];
   layers.forEach(({ sel, sx, sy }) => {
     const el = document.querySelector(`#page-explore ${sel}`);
     if (!el) return;
-    
+
     const tx = -mx * sx;
     const ty = -my * sy;
-    
+
     el.style.setProperty('--px', `${tx}px`);
     el.style.setProperty('--py', `${ty}px`);
   });
@@ -2158,7 +2172,7 @@ function buildHotspots() {
     dot.className = 'body-hotspot';
     dot.dataset.cat = cat.id;
     dot.title = cat.label;
-    
+
     const idx = CATEGORIES.findIndex(c => c.id === cat.id);
     dot.style.animationDelay = `${idx * 0.35}s`;
     dot.addEventListener('click', () => selectOrgan(cat.id));
@@ -2176,7 +2190,7 @@ function updateHotspotPositions() {
 
   const { activeOrgan } = state.explore;
 
-  
+
   if (activeOrgan) {
     layer.style.display = 'none';
     return;
@@ -2187,7 +2201,7 @@ function updateHotspotPositions() {
     const dot = layer.querySelector(`[data-cat="${cat.id}"]`);
     if (!dot) return;
 
-    
+
     const pos3d = new THREE.Vector3(...cat.position);
     const screenPos = toScreenPos(pos3d);
 
@@ -2196,7 +2210,7 @@ function updateHotspotPositions() {
       return;
     }
 
-    
+
     const canvas = exploreRenderer.domElement;
     const W = canvas.width / window.devicePixelRatio;
     const H = canvas.height / window.devicePixelRatio;
@@ -2207,7 +2221,7 @@ function updateHotspotPositions() {
 
     dot.style.display = '';
     dot.style.left = `${screenPos.x}px`;
-    dot.style.top  = `${screenPos.y}px`;
+    dot.style.top = `${screenPos.y}px`;
     dot.classList.toggle('hovered', cat.id === state.explore.hoveredOrgan);
   });
 }
@@ -2247,14 +2261,14 @@ function updateSubHotspotPositions() {
 
     pill.style.display = '';
     pill.style.left = `${screenPos.x}px`;
-    pill.style.top  = `${screenPos.y}px`;
+    pill.style.top = `${screenPos.y}px`;
   });
 }
 
 function setSexVisibility(sex) {
   state.explore.sex = sex;
-  
-  
+
+
   document.getElementById('btn-female')?.classList.toggle('active', sex === 'female');
   document.getElementById('btn-male')?.classList.toggle('active', sex === 'male');
   document.getElementById('mob-female-btn')?.classList.toggle('active', sex === 'female');
@@ -2294,7 +2308,7 @@ function buildSidebar() {
     btn.addEventListener('mouseleave', () => { state.explore.hoveredOrgan = null; });
   });
 
-  
+
   document.getElementById('sidebar-header')?.addEventListener('click', () => {
     document.getElementById('organ-sidebar')?.classList.toggle('expanded');
   });
@@ -2304,7 +2318,7 @@ function selectOrgan(catId) {
   state.explore.activeOrgan = catId;
   state.explore.activeSubHotspot = null;
 
-  
+
   const cat = CATEGORIES.find(c => c.id === catId);
   if (cat) {
     const zoomZ = cat.zoomOffset ?? 1.0;
@@ -2335,27 +2349,27 @@ function updateExploreUI() {
   const prevCat = activeIndex <= 0 ? CATEGORIES[CATEGORIES.length - 1] : CATEGORIES[activeIndex - 1];
   const nextCat = activeIndex >= CATEGORIES.length - 1 || activeIndex === -1 ? CATEGORIES[0] : CATEGORIES[activeIndex + 1];
 
-  
+
   document.getElementById('organ-sidebar')?.classList.toggle('hidden', !!activeOrgan);
   document.querySelectorAll('.organ-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cat === activeOrgan);
   });
 
-  
+
   document.getElementById('explore-home-btn')?.style.setProperty('display', activeOrgan ? 'none' : '');
 
-  
+
   const sexHeader = document.getElementById('sex-header');
   if (sexHeader) sexHeader.style.display = activeSubHotspot ? 'none' : '';
 
-  
+
   document.getElementById('back-zoom-overlay')?.classList.toggle('visible', !!activeOrgan && !activeSubHotspot);
 
-  
+
   const bb = document.getElementById('bottom-bar');
   if (bb) bb.classList.toggle('visible', !!activeOrgan && !activeSubHotspot);
 
-  
+
   if (activeOrgan && activeIndex !== -1) {
     const cat = CATEGORIES[activeIndex];
     const icon = document.getElementById('active-icon');
@@ -2364,26 +2378,26 @@ function updateExploreUI() {
     if (label) label.textContent = cat.label;
   }
 
-  
+
   const prevLabel = document.getElementById('prev-label');
   const nextLabel = document.getElementById('next-label');
   if (prevLabel) prevLabel.textContent = prevCat.label;
   if (nextLabel) nextLabel.textContent = nextCat.label;
 
-  
+
   const subOverlay = document.getElementById('sub-info-overlay');
   if (subOverlay) subOverlay.style.display = activeSubHotspot ? '' : 'none';
 
-  
+
   const mobPill = document.getElementById('mobile-ctrl-pill');
   if (mobPill) mobPill.style.display = activeSubHotspot ? 'none' : '';
 
-  
+
   updateHotspots();
 }
 
 function updateHotspots() {
-  
+
   const existing = document.getElementById('hotspot-layer');
   if (existing) existing.remove();
 
@@ -2398,7 +2412,7 @@ function updateHotspots() {
   layer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:15;';
 
   cat.subHotspots.forEach((sh, i) => {
-    
+
     const pos3d = new THREE.Vector3(...sh.position);
     const screenPos = toScreenPos(pos3d);
     if (!screenPos) return;
@@ -2436,17 +2450,17 @@ function showSubPanel(subId) {
   const sub = cat?.subHotspots?.find(s => s.id === subId);
   if (!sub) return;
 
-  
+
   const bl = document.getElementById('sub-back-label');
   if (bl) bl.textContent = sub.label?.toUpperCase() || '';
 
-  
+
   const video = document.getElementById('sub-video');
   const vmap = VIDEO_MAP[subId];
   if (video && vmap) {
     video.src = vmap.src;
     video.load();
-    video.play().catch(() => {});
+    video.play().catch(() => { });
     const lbl = document.getElementById('oxi-label');
     if (lbl) lbl.innerHTML = vmap.label.replace('\n', '<br>');
     document.getElementById('video-wrapper').style.display = '';
@@ -2454,7 +2468,7 @@ function showSubPanel(subId) {
     document.getElementById('video-wrapper').style.display = 'none';
   }
 
-  
+
   scrollAnim.current = 0;
   scrollAnim.target = 0;
   if (scrollAnim.animId) {
@@ -2467,7 +2481,7 @@ function showSubPanel(subId) {
 
   const contentData = getPanelContent(subId) || { primary: `<h2 class="panel-title">${sub.label}</h2><div class="panel-body-text"><p>Analisis mendetail segera hadir...</p></div>` };
 
-  
+
   const topNav = document.getElementById('sub-top-nav');
   const info = getSubContent(subId, sub.label);
 
@@ -2475,14 +2489,14 @@ function showSubPanel(subId) {
   let showOverview = false;
   let renderNav, renderTabs;
 
-  
+
   const updatePanelHtml = (contentHtml) => {
     const panelContent = document.getElementById('sub-panel-content');
     if (panelContent) {
       panelContent.innerHTML = contentHtml || `<h2 class="panel-title">${sub.label}</h2><div class="panel-body-text"><p>Detailed analysis coming soon...</p></div>`;
       if (scrollArea) scrollArea.scrollTop = 0;
 
-      
+
       document.getElementById('go-to-overview-btn')?.addEventListener('click', () => {
         if (info.tabs) {
           if (tabIdx < info.tabs.length - 1) {
@@ -2499,17 +2513,17 @@ function showSubPanel(subId) {
 
   if (topNav) {
     if (info.tabs) {
-      
+
       renderTabs = () => {
         topNav.innerHTML = `<div class="nav-pill-container">
           <span class="nav-subtitle">${sub.label}:</span>
           ${info.tabs.map((tab, i) => i === tabIdx
-            ? `<button class="nav-active-btn" data-tab="${i}">${tab}</button>`
-            : `<span class="nav-inactive-btn" data-tab="${i}">${tab}</span>`
-          ).join('')}
+          ? `<button class="nav-active-btn" data-tab="${i}">${tab}</button>`
+          : `<span class="nav-inactive-btn" data-tab="${i}">${tab}</span>`
+        ).join('')}
         </div>`;
 
-        
+
         let tabKey = 'primary';
         if (tabIdx === 0) tabKey = 'primary';
         else if (tabIdx === 1) tabKey = 'secondary';
@@ -2532,7 +2546,7 @@ function showSubPanel(subId) {
           }
         </div>`;
 
-        
+
         updatePanelHtml(showOverview ? contentData.overview : contentData.primary);
 
         document.getElementById('nav-primary')?.addEventListener('click', () => { showOverview = false; renderNav(); });
@@ -2544,11 +2558,11 @@ function showSubPanel(subId) {
 }
 
 function bindExploreUI() {
-  
+
   const scrollArea = document.querySelector('.panel-scroll-area');
-  
+
   function updateScrollAnim() {
-    scrollAnim.current += (scrollAnim.target - scrollAnim.current) * 0.12; 
+    scrollAnim.current += (scrollAnim.target - scrollAnim.current) * 0.12;
     if (Math.abs(scrollAnim.target - scrollAnim.current) < 0.001) {
       scrollAnim.current = scrollAnim.target;
       scrollAnim.animId = null;
@@ -2568,10 +2582,10 @@ function bindExploreUI() {
     });
   }
 
-  
+
   document.getElementById('explore-home-btn')?.addEventListener('click', () => navigateTo('home'));
 
-  
+
   document.getElementById('back-zoom-btn')?.addEventListener('click', () => {
     state.explore.activeOrgan = null;
     state.explore.activeSubHotspot = null;
@@ -2580,18 +2594,18 @@ function bindExploreUI() {
     updateExploreUI();
   });
 
-  
+
   document.getElementById('sub-info-back')?.addEventListener('click', () => {
     state.explore.activeSubHotspot = null;
     document.getElementById('sub-info-overlay').style.display = 'none';
     updateExploreUI();
   });
 
-  
+
   document.getElementById('sound-toggle')?.addEventListener('click', toggleSound);
   document.getElementById('mob-music-btn')?.addEventListener('click', toggleSound);
 
-  
+
   document.getElementById('mob-back-btn')?.addEventListener('click', () => {
     if (state.explore.activeOrgan) {
       state.explore.activeOrgan = null;
@@ -2604,7 +2618,7 @@ function bindExploreUI() {
     }
   });
 
-  
+
   document.getElementById('bb-prev')?.addEventListener('click', navPrev);
   document.getElementById('bb-next')?.addEventListener('click', navNext);
   document.getElementById('bb-prev-mob')?.addEventListener('click', navPrev);
@@ -2642,25 +2656,25 @@ async function autoPlayBGM() {
   try {
     bgmAudio = new Audio('public/models/Music.mp3');
     bgmAudio.loop = true;
-    bgmAudio.volume = 0.5; 
+    bgmAudio.volume = 0.5;
     audioLoaded = true;
 
     if (state.explore.soundOn) {
       bgmAudio.play().catch(e => console.warn('BGM play failed:', e));
     }
     updateSoundUI();
-  } catch(e) {
+  } catch (e) {
     console.warn('BGM load failed:', e);
   }
 }
 
 function toggleSound() {
-  
+
   state.explore.soundOn = !state.explore.soundOn;
 
   if (state.explore.soundOn) {
     if (!bgmAudio || !audioLoaded) {
-      
+
       autoPlayBGM();
     } else {
       bgmAudio.play().catch(e => console.warn('BGM resume failed:', e));
@@ -2688,7 +2702,7 @@ function updateSoundUI() {
       : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/></svg>';
   }
 
-  
+
   document.addEventListener('visibilitychange', () => {
     if (!bgmAudio || !audioLoaded) return;
     if (document.hidden) {
@@ -2701,21 +2715,21 @@ function updateSoundUI() {
 
 
 function init() {
-  
+
   const hash = window.location.hash.slice(1);
   const page = PAGES.includes(hash) ? hash : 'home';
   navigateTo(page);
 
-  
+
   applyLang(currentLang);
 
-  
+
   window.addEventListener('hashchange', () => {
     const h = window.location.hash.slice(1);
     if (PAGES.includes(h)) navigateTo(h);
   });
 
-  
+
   window.addEventListener('resize', () => {
     state.explore.isMobile = window.innerWidth <= 768;
     if (homeRenderer) {

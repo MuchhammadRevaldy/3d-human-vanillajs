@@ -1,14 +1,555 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/somalab_logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>SomaLab — Interactive 3D Body Explorer</title>
-  <meta name="description" content="Explore the human body in 3D. Interactive organ exploration with holographic visualization." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="public/somalab_logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="SomaLab — Interactive 3D Body Explorer. Explore the human body in 3D with holographic visualization.">
+  <title>SomaLab — Interactive 3D Body Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2.3">
+</head>
+<body>
+
+  <!-- ======== NAVBAR (hidden on explore) ======== -->
+  <nav class="universal-navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="#home" class="navbar-logo spa-link" data-page="home">
+        <img src="public/somalab_logo.png" alt="SomaLab" style="height:28px;object-fit:contain;">
+        <span class="logo-text">Soma<span>Lab</span></span>
+      </a>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+        <svg id="menu-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="close-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="navbar-menu-wrapper" id="navbar-menu">
+        <div class="navbar-links">
+          <a href="#home"    class="nav-item spa-link" data-page="home"   >Home</a>
+          <a href="#about"   class="nav-item spa-link" data-page="about"  >About</a>
+          <a href="#content" class="nav-item spa-link" data-page="content">Content</a>
+          <a href="#contact" class="nav-item spa-link" data-page="contact">Contact</a>
+        </div>
+        <div class="navbar-cta">
+          <a href="#explore" class="cta-button primary-btn shimmer-btn spa-link" data-page="explore">
+            <span>Start 3D Exploration</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== PAGES ======== -->
+  <div id="app">
+
+    <!-- ===== PAGE: HOME ===== -->
+    <div id="page-home" class="page active">
+      <div class="home-scroll-page">
+        <div class="home-page-container">
+          <canvas id="particle-canvas" class="particle-bg"></canvas>
+          <div class="home-bg-glow"></div>
+
+          <div class="home-content" id="hero-section">
+            <div class="home-text-section">
+              <h1 class="home-headline reveal-item reveal-delay-1">
+                Explore Human Anatomy at <span class="highlight">Your Fingertips</span>
+              </h1>
+              <p class="home-value-prop reveal-item reveal-delay-2">
+                Interactive 3D visualization provides a profound understanding of the human body. Gain valuable insights into organ systems, identify early biomarkers, and explore complex systemic conditions through our comprehensive, medically-accurate 3D platform.
+              </p>
+              <div class="home-cta-group reveal-item reveal-delay-3">
+                <a href="#explore" class="btn-primary-large shimmer-btn spa-link" data-page="explore">
+                  <span>Start 3D Exploration</span>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="#about" class="btn-secondary-large spa-link" data-page="about">Learn More</a>
+              </div>
+              <div class="home-features-pill">
+                <div class="pill-item reveal-item reveal-delay-4"><span class="pill-icon">🧠</span> Precise Models</div>
+                <div class="pill-item reveal-item reveal-delay-5"><span class="pill-icon">🧬</span> In-depth Systems</div>
+                <div class="pill-item reveal-item reveal-delay-6"><span class="pill-icon">🔬</span> Clinical Insights</div>
+              </div>
+            </div>
+
+            <div class="home-3d-preview reveal-item reveal-delay-2">
+              <div class="preview-canvas-wrapper">
+                <div class="preview-glow-bg"></div>
+                <canvas id="home-3d-canvas" style="width:100%;height:100%;z-index:10;position:relative;"></canvas>
+                <div class="preview-glass-overlay">
+                  <div class="glass-indicator">
+                    <div class="indicator-dot"></div> Live 3D Render
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="discover-section">
+          <div class="discover-content reveal-section">
+            <div class="discover-header">
+              <h2 class="reveal-item">Why Choose SomaLab?</h2>
+              <p class="reveal-item">Our platform goes beyond traditional 2D textbooks, offering an unprecedented level of clinical depth and interactivity.</p>
+            </div>
+            <div class="features-grid">
+              <div class="feature-box reveal-item">
+                <div class="feature-icon-wrapper">🔬</div>
+                <h3>Zoom to Cellular Level</h3>
+                <p>Seamlessly transition from macro organ structures to microscopic cellular activity and neurotransmitter pathways.</p>
+              </div>
+              <div class="feature-box reveal-item">
+                <div class="feature-icon-wrapper">⚕️</div>
+                <h3>Clinical Biomarkers</h3>
+                <p>Visualize early signs of oxidative stress, toxins, and autoimmune markers before clinical diagnosis.</p>
+              </div>
+              <div class="feature-box reveal-item">
+                <div class="feature-icon-wrapper">🧬</div>
+                <h3>Accurate Anatomy</h3>
+                <p>Interact with highly detailed 3D models of the brain, heart, liver, digestive tract, and DNA.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div id="home-footer"></div>
+      </div>
+    </div>
+
+    <!-- ===== PAGE: ABOUT ===== -->
+    <div id="page-about" class="page">
+      <div class="about-page-container">
+        <div class="about-bg-blob about-blob-1"></div>
+        <div class="about-bg-blob about-blob-2"></div>
+        <div class="about-content-wrapper">
+          <div class="about-hero reveal-section">
+            <div class="about-badge reveal-item">Discover SomaLab</div>
+            <div class="hero-content">
+              <div class="hero-icon-wrapper reveal-item reveal-delay-1">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <h1 class="about-title reveal-item reveal-delay-2">
+                Bridging the Gap Between <span class="text-gradient">Medical Science</span> and You.
+              </h1>
+              <p class="about-subtitle reveal-item reveal-delay-3">
+                SomaLab is an interactive digital anatomy and health educational platform designed to provide a deep, accurate, and accessible visualization of the human body's structures and functions.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-story-grid reveal-section">
+            <div class="story-text-card glass-panel reveal-item">
+              <h2 class="story-heading">Empowering Through Knowledge</h2>
+              <p>This platform was created to bridge the gap between complex medical information and general public comprehension. We believe that knowledge of one's own body is the first step toward a healthier lifestyle.</p>
+              <p>SomaLab brings modern 3D technology to your fingertips—empowering students, educators, medical professionals, and the general public to explore the wonders of the human body without limits.</p>
+            </div>
+            <div class="story-visual-card reveal-item reveal-delay-2">
+              <div class="visual-glass-element">
+                <svg class="visual-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 10.5h11"/><circle cx="12" cy="12" r="9"/><path d="M10 17 8.5 19.5"/><path d="M14 17l1.5 2.5"/></svg>
+                <div class="visual-text">Explore<br>Without Limits</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-pillars-section reveal-section">
+            <div class="about-pillars-header">
+              <h2 class="reveal-item">Our Core Pillars</h2>
+              <p class="reveal-item">The foundations that drive our platform forward.</p>
+            </div>
+            <div class="about-pillars-grid">
+              <div class="pillar-card glass-panel interactive-card reveal-item">
+                <div class="pillar-icon-wrapper bg-blue-tint">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0077ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Our Vision</h3>
+                <p>To be the leading interactive anatomy learning platform that democratizes medical knowledge, enabling individuals from all backgrounds to better recognize and understand their bodies.</p>
+              </div>
+              <div class="pillar-card glass-panel interactive-card reveal-item reveal-delay-1">
+                <div class="pillar-icon-wrapper bg-purple-tint">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h3>Our Mission</h3>
+                <ul class="mission-list">
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Present accurate yet lightweight and interactive 3D medical models.</li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Transform rigid biology learning into a fun exploration experience.</li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Provide reliable science-based information to improve public health literacy.</li>
+                </ul>
+              </div>
+              <div class="pillar-card glass-panel interactive-card reveal-item reveal-delay-2">
+                <div class="pillar-icon-wrapper bg-cyan-tint">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
+                </div>
+                <h3>Why We Built It</h3>
+                <p>Textbooks and 2D illustrations are often insufficient to represent the complexity of a living, moving body. SomaLab was built to create a virtual laboratory where your curiosity can be answered visually, in detail, and in real-time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="about-footer"></div>
+      </div>
+    </div>
+
+    <!-- ===== PAGE: CONTENT ===== -->
+    <div id="page-content" class="page">
+      <div class="content-page-container">
+        <div class="content-bg-blob blob-a"></div>
+        <div class="content-bg-blob blob-b"></div>
+        <div class="content-header text-center reveal-section">
+          <h1 class="content-title reveal-item">Clinical <span class="text-gradient">Insights</span></h1>
+          <p class="content-subtitle reveal-item">Explore expertly curated articles on maintaining organ health and understanding your body's complex systems.</p>
+        </div>
+        <div class="bento-grid-container" id="bento-grid"></div>
+        <!-- Article modal -->
+        <div class="modal-container" id="article-modal" style="display:none;">
+          <div class="modal-backdrop" id="modal-backdrop"></div>
+          <div class="article-modal">
+            <button class="modal-close-btn" id="modal-close-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="modal-header" id="modal-header"></div>
+            <div class="modal-body"><p class="modal-text" id="modal-text"></p></div>
+          </div>
+        </div>
+        <div id="content-footer"></div>
+      </div>
+    </div>
+
+    <!-- ===== PAGE: CONTACT ===== -->
+    <div id="page-contact" class="page">
+      <div class="contact-page-container">
+        <div class="contact-bg-blob blob-c"></div>
+        <div class="contact-bg-blob blob-d"></div>
+        <div class="contact-wrapper">
+          <div class="contact-header reveal-section">
+            <h1 class="contact-title reveal-item">Get in <span class="text-gradient">Touch</span></h1>
+            <p class="contact-subtitle reveal-item">Have questions about our medical visualization platform or interested in collaboration? We'd love to hear from you.</p>
+          </div>
+          <div class="contact-grid reveal-section">
+            <div class="contact-form-card glass-panel reveal-item">
+              <h2 class="form-heading">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0077ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Send a Message
+              </h2>
+              <form class="contact-form" id="contact-form">
+                <div class="form-group-split">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="firstName" placeholder="John" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="lastName" placeholder="Doe" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label>Message</label>
+                  <textarea name="message" rows="5" placeholder="How can we help you today?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn-premium">
+                  <span>Send Message</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </form>
+            </div>
+            <div class="contact-info-panel">
+              <div class="info-card glass-panel reveal-item">
+                <div class="info-icon-wrapper">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0077ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <h3>Headquarters</h3>
+                  <p>123 Medical Innovation Drive,<br>Jakarta, Indonesia 12000</p>
+                </div>
+              </div>
+              <div class="info-card glass-panel reveal-item reveal-delay-1">
+                <div class="info-icon-wrapper">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0077ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <h3>Email Us</h3>
+                  <p>support@somalab.com<br>partnerships@somalab.com</p>
+                </div>
+              </div>
+              <div class="info-card glass-panel reveal-item reveal-delay-2">
+                <div class="info-icon-wrapper">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0077ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.92z"/></svg>
+                </div>
+                <div>
+                  <h3>Call Us</h3>
+                  <p>+62 811 2345 6789<br>Mon - Fri, 9:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="contact-footer"></div>
+      </div>
+    </div>
+
+    <!-- ===== PAGE: EXPLORE (3D) ===== -->
+    <div id="page-explore" class="page">
+      <div class="app-wrapper explore-page" id="explore-wrapper">
+        <!-- Splash Screen -->
+        <div class="splash-overlay" id="splash-overlay">
+          <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+            <div class="splash-ring splash-ring-1"></div>
+            <div class="splash-ring splash-ring-2"></div>
+            <img src="public/somalab_logo.png" alt="SomaLab" class="splash-logo">
+          </div>
+        </div>
+
+        <!-- Crosshair cursor -->
+        <div class="crosshair-root" id="crosshair-root">
+          <div class="crosshair-h" id="crosshair-h"></div>
+          <div class="crosshair-v" id="crosshair-v"></div>
+        </div>
+
+        <!-- Bubble BG -->
+        <div class="bubble-bg-root" id="bubble-bg">
+          <div class="bubble-gradient-layer"></div>
+          <div class="smoke-blob blob-1"></div>
+          <div class="smoke-blob blob-2"></div>
+          <div class="smoke-blob blob-3"></div>
+          <div class="smoke-blob blob-4"></div>
+          <!-- Floating particle orbs -->
+          <div class="particle-orb orb-1"></div>
+          <div class="particle-orb orb-2"></div>
+          <div class="particle-orb orb-3"></div>
+          <div class="particle-orb orb-4"></div>
+          <div class="particle-orb orb-5"></div>
+          <div class="particle-orb orb-6"></div>
+          <div class="particle-orb orb-7"></div>
+          <div class="particle-orb orb-8"></div>
+        </div>
+
+        <!-- Logo -->
+        <div class="logo">
+          <div class="logo-icon"><img src="public/somalab_logo.png" alt="SomaLab" style="height:32px;object-fit:contain;"></div>
+          <div class="logo-text">Soma<span>Lab</span></div>
+        </div>
+
+        <!-- Home button -->
+        <button class="home-btn-float desktop-only" id="explore-home-btn" title="Back to Home">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </button>
+
+        <!-- Sex toggle header -->
+        <div class="header explore-header desktop-only" id="sex-header">
+          <div class="lang-toggle" id="lang-toggle-explore">
+            <button class="lang-btn active" data-lang="en" onclick="applyLang('en')">🇬🇧 EN</button>
+            <button class="lang-btn" data-lang="id" onclick="applyLang('id')">🇮🇩 ID</button>
+          </div>
+          <div class="sex-toggle">
+            <button class="sex-btn active" id="btn-female" onclick="setSex('female')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><line x1="12" y1="13" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+              Female
+            </button>
+            <button class="sex-btn" id="btn-male" onclick="setSex('male')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="14" r="5"/><line x1="14" y1="10" x2="21" y2="3"/><polyline points="16 3 21 3 21 8"/></svg>
+              Male
+            </button>
+          </div>
+        </div>
+
+        <!-- Back zoom button -->
+        <div class="back-zoom-overlay desktop-only" id="back-zoom-overlay">
+          <button class="back-zoom-btn" id="back-zoom-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Back to Overview
+          </button>
+        </div>
+
+        <!-- Sound toggle -->
+        <div class="footer-left desktop-only">
+          <div class="sound-toggle" id="sound-toggle" style="cursor:pointer;">
+            <div class="music-wave-container" id="wave-container">
+              <span class="wave-bar"></span><span class="wave-bar"></span>
+              <span class="wave-bar"></span><span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+            </div>
+            <div class="sound-pill" id="sound-pill">SOUND ON</div>
+          </div>
+        </div>
+
+        <!-- Mobile control pill -->
+        <div class="mobile-ctrl-pill mobile-only" id="mobile-ctrl-pill">
+          <button class="mob-icon-btn" id="mob-back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="mob-divider"></div>
+          <button class="mob-sex-btn active" id="mob-female-btn" onclick="setSex('female')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><line x1="12" y1="13" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+            Female
+          </button>
+          <button class="mob-sex-btn" id="mob-male-btn" onclick="setSex('male')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="14" r="5"/><line x1="14" y1="10" x2="21" y2="3"/><polyline points="16 3 21 3 21 8"/></svg>
+            Male
+          </button>
+          <div class="mob-divider"></div>
+          <button class="mob-icon-btn mob-music-btn music-on" id="mob-music-btn">
+            <div class="music-wave-mini"><span></span><span></span><span></span><span></span></div>
+          </button>
+          <div class="mob-divider"></div>
+          <button class="lang-btn mob-lang-btn active" data-lang="en" onclick="applyLang('en')">EN</button>
+          <button class="lang-btn mob-lang-btn" data-lang="id" onclick="applyLang('id')">ID</button>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="organ-sidebar">
+          <div class="sidebar-title">SELECT SYSTEM</div>
+          <div id="sidebar-buttons"></div>
+        </div>
+
+        <!-- 3D Canvas -->
+        <div class="canvas-container">
+          <canvas id="explore-canvas"></canvas>
+        </div>
+
+        <!-- Footer center -->
+        <div class="footer-center">Created by <strong>Sandy.</strong></div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar-container" id="bottom-bar">
+          <div class="bottom-bar-glass">
+            <button class="nav-action-btn solid mobile-only" id="bb-prev-mob">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="active-pill-solid" id="active-pill">
+              <span class="icon desktop-only" id="active-icon"></span>
+              <span class="label mobile-text-center" id="active-label"></span>
+            </div>
+            <div class="nav-controls desktop-only">
+              <div class="nav-btn-wrapper">
+                <div class="nav-tooltip">
+                  <span class="tooltip-sub">PREV</span>
+                  <span class="tooltip-title" id="prev-label"></span>
+                </div>
+                <button class="nav-action-btn solid" id="bb-prev">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+              </div>
+              <div class="nav-btn-wrapper">
+                <div class="nav-tooltip">
+                  <span class="tooltip-sub">NEXT</span>
+                  <span class="tooltip-title" id="next-label"></span>
+                </div>
+                <button class="nav-action-btn solid" id="bb-next">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+            </div>
+            <button class="nav-action-btn solid mobile-only" id="bb-next-mob">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sub-hotspot overlay -->
+        <div class="sub-info-overlay" id="sub-info-overlay" style="display:none;">
+          <button class="sub-info-back-btn" id="sub-info-back">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span class="mobile-back-text mobile-only" id="sub-back-label"></span>
+          </button>
+          <div class="sub-info-top-navbar" id="sub-top-nav"></div>
+          <div class="oxi-video-position-wrapper desktop-only" id="video-wrapper">
+            <div class="oxi-video-container" id="video-container">
+              <video id="sub-video" autoplay loop muted playsinline class="oxi-video-element"></video>
+              <div class="oxi-label" id="oxi-label"></div>
+            </div>
+          </div>
+          <div class="sub-info-side-panel-desktop" id="sub-panel-desktop">
+            <div class="panel-scroll-area">
+              <div class="scroll-content-wrapper" id="sub-panel-content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- #app -->
+
+  <!-- Floating language toggle — visible on landing pages, hidden on explore -->
+  <div class="lang-float" id="lang-float">
+    <button class="lang-btn active" data-lang="en" onclick="applyLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" data-lang="id" onclick="applyLang('id')">🇮🇩 ID</button>
+  </div>
+
+  <!-- ======== SHARED FOOTER TEMPLATE ======== -->
+  <template id="footer-template">
+    <footer class="global-footer">
+      <div class="footer-glow-line"></div>
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-brand-col">
+            <a href="#home" class="footer-logo spa-link" data-page="home">
+              <img src="public/somalab_logo.png" alt="SomaLab" class="footer-logo-img">
+              <span class="logo-text">Soma<span>Lab</span></span>
+            </a>
+            <p class="footer-desc">Empowering preventative healthcare through immersive 3D clinical visualization. Bridging the gap between complex medical science and accessible public knowledge.</p>
+            <div class="footer-socials">
+              <a href="#" class="social-icon" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="#" class="social-icon" aria-label="Twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+              </a>
+              <a href="#" class="social-icon" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-links-col">
+            <h4 class="footer-heading">Platform</h4>
+            <ul class="footer-link-list">
+              <li><a href="#explore" class="spa-link" data-page="explore">3D Explorer</a></li>
+              <li><a href="#about" class="spa-link" data-page="about">About Us</a></li>
+              <li><a href="#home" class="spa-link" data-page="home">Interactive Home</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4 class="footer-heading">Resources</h4>
+            <ul class="footer-link-list">
+              <li><a href="#content" class="spa-link" data-page="content">Clinical Articles</a></li>
+              <li><a href="#contact" class="spa-link" data-page="contact">Contact Support</a></li>
+              <li><a href="#content" class="spa-link" data-page="content">Organ Guides</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact-col">
+            <h4 class="footer-heading">Get in Touch</h4>
+            <ul class="footer-contact-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>123 Medical Innovation Drive,<br>Jakarta, Indonesia 12000</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>support@somalab.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">© 2025 Created by <strong>Sandy</strong>. All rights reserved.</p>
+          <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="dot-separator">•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </template>
+
+  <!-- Three.js CDN (r128 - legacy global build with examples/js) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="panels-id.js?v=1.0"></script>
+  <script src="script.js?v=2.3"></script>
+</body>
 </html>

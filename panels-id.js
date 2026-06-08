@@ -1,12 +1,9 @@
-/* ============================================================
-   SomaLab – Panel Content (Bahasa Indonesia)
-   Mirrors PANEL_CONTENT structure in script.js
-   ============================================================ */
 
-/* eslint-disable */
+
+
 const PANEL_CONTENT_ID = {
 
-  /* ── NEURAL ZOOMER ─────────────────────────────────────── */
+  
   'neural': {
     primary: `<h2 class="panel-title">Pola Demielinasi Ringan &amp; Kognitif</h2>
 <div class="panel-body-text">
@@ -142,7 +139,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── NEUROTRANSMITTER ───────────────────────────────────── */
+  
   'neurotrans': {
     primary: `<h2 class="panel-title">Pola Ketidakseimbangan Neurotransmiter &amp; Mood-Kognitif</h2>
 <div class="panel-body-text">
@@ -255,7 +252,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── HORMONE ZOOMER ─────────────────────────────────────── */
+  
   'hormone_z': {
     primary: `<h2 class="panel-title">Pola Osteoporosis Pascamenopause &amp; Defisiensi Hormon</h2>
 <div class="panel-body-text">
@@ -382,7 +379,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── CARDIO ZOOMER ──────────────────────────────────────── */
+  
   'cardio': {
     primary: `<h2 class="panel-title">Pola Disfungsi Endotelial &amp; Risiko Kardiovaskular</h2>
 <div class="panel-body-text">
@@ -476,7 +473,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── TOXINS PANEL ───────────────────────────────────────── */
+  
   'toxins_panel': {
     primary: `<h2 class="panel-title">Pola Beban Toksin Total &amp; Toksisitas Lingkungan</h2>
 <div class="panel-body-text">
@@ -576,7 +573,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── OXIDATIVE STRESS ───────────────────────────────────── */
+  
   'oxi': {
     primary: `<h2 class="panel-title">Pola Kelelahan Kronis &amp; Kerusakan Oksidatif Multi-Sistem</h2>
 <div class="panel-body-text">
@@ -667,7 +664,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── FOOD SENSITIVITY ───────────────────────────────────── */
+  
   'food': {
     primary: `<h2 class="panel-title">Tes Sensitivitas Makanan Komprehensif — 209 Makanan &amp; 57 Aditif</h2>
 <div class="panel-body-text">
@@ -724,7 +721,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── GUT ZOOMER ─────────────────────────────────────────── */
+  
   'gutzoomer': {
     primary: `<h2 class="panel-title">Pola Permeabilitas Usus &amp; Peradangan</h2>
 <div class="panel-body-text">
@@ -823,7 +820,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── GENETICS TESTING SUITE ─────────────────────────────── */
+  
   'genetics_test': {
     primary: `<h2 class="panel-title">Cetak Biru Genetik Komprehensif untuk Optimasi Kesehatan Personal</h2>
 <div class="panel-body-text">
@@ -879,7 +876,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── NUTRITION ──────────────────────────────────────────── */
+  
   'nutri': {
     primary: `<h2 class="panel-title">Penilaian Nutrisi Seluler Komprehensif — 40+ Nutrisi</h2>
 <div class="panel-body-text">
@@ -934,7 +931,7 @@ const PANEL_CONTENT_ID = {
 </div>`
   },
 
-  /* ── AUTOIMMUNITY ───────────────────────────────────────── */
+  
   'auto': {
     primary: `<h2 class="panel-title">Skrining Penyakit Autoimun Komprehensif — 30+ Antibodi Jaringan</h2>
 <div class="panel-body-text">
@@ -993,7 +990,7 @@ const PANEL_CONTENT_ID = {
 
 };
 
-/* ── SUBHOTSPOT CONTENT (Indonesian titles) ─────────────────── */
+
 const SUBHOTSPOT_CONTENT_ID = {
   'neural':        { primary: 'Pola Demielinasi Ringan & Kognitif',                  secondary: 'Ikhtisar Tes' },
   'neurotrans':    { primary: 'Pola Ketidakseimbangan Neurotransmiter & Mood-Kognitif', secondary: 'Ikhtisar Tes' },

@@ -1,11 +1,8 @@
-/* ============================================================
-   SomaLab - Vanilla JS SPA
-   Replaces React + React Router + Framer Motion + R3F
-   ============================================================ */
+
 
 'use strict';
 
-// ─── TRANSLATIONS ────────────────────────────────────────────
+
 let currentLang = localStorage.getItem('somalab-lang') || 'en';
 
 const I18N = {
@@ -103,19 +100,19 @@ const I18N = {
   },
 };
 
-// Lookup helper — reads from currentLang, falls back to 'en'
+
 const t = (path) => {
   const parts = path.split('.');
   let val = I18N[currentLang];
   for (const p of parts) { val = val?.[p]; }
   if (val !== undefined) return val;
-  // fallback to English
+  
   val = I18N.en;
   for (const p of parts) { val = val?.[p]; }
   return val ?? path;
 };
 
-// ─── LANG HELPERS ─────────────────────────────────────────────
+
 function _setTxt(elOrSel, text) {
   if (!text && text !== '') return;
   const el = typeof elOrSel === 'string' ? document.querySelector(elOrSel) : elOrSel;
@@ -132,14 +129,14 @@ function applyLang(lang) {
   localStorage.setItem('somalab-lang', lang);
   document.documentElement.lang = lang;
 
-  // Update all lang-btn active states
+  
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
 
   const L = I18N[lang];
 
-  // ── Navbar ──────────────────────────────────────────────────
+  
   _setTxt('a.nav-item[data-page="home"]',    L.nav.home);
   _setTxt('a.nav-item[data-page="about"]',   L.nav.about);
   _setTxt('a.nav-item[data-page="content"]', L.nav.content);
@@ -149,7 +146,7 @@ function applyLang(lang) {
   });
   _setTxt('a.btn-secondary-large.spa-link', L.home.learn_more);
 
-  // ── Home ────────────────────────────────────────────────────
+  
   _setHtml('h1.home-headline', L.home.headline);
   _setTxt('p.home-value-prop', L.home.subtext);
   const pills = document.querySelectorAll('.pill-item');
@@ -174,7 +171,7 @@ function applyLang(lang) {
     _setTxt(fb.querySelector('p'),  featData[i][1]);
   });
 
-  // ── About ───────────────────────────────────────────────────
+  
   _setTxt('.about-badge',    L.about.badge);
   _setHtml('h1.about-title', L.about.title);
   _setTxt('p.about-subtitle', L.about.subtitle);
@@ -200,11 +197,11 @@ function applyLang(lang) {
   }
   if (pcards[2]) { _setTxt(pcards[2].querySelector('h3'), L.about.why_title); _setTxt(pcards[2].querySelector('p'), L.about.why_p); }
 
-  // ── Content ─────────────────────────────────────────────────
+  
   _setHtml('h1.content-title',  L.content.title);
   _setTxt('p.content-subtitle', L.content.subtitle);
 
-  // ── Contact ─────────────────────────────────────────────────
+  
   _setHtml('h1.contact-title',  L.contact.title);
   _setTxt('p.contact-subtitle', L.contact.subtitle);
   const fmHdr = document.querySelector('h2.form-heading');
@@ -220,21 +217,21 @@ function applyLang(lang) {
   const hoursEl = document.querySelector('.info-card:last-child p');
   if (hoursEl) hoursEl.innerHTML = `+62 811 2345 6789<br>${L.contact.hours}`;
 
-  // ── Explore ─────────────────────────────────────────────────
+  
   _setTxt('#organ-sidebar .sidebar-title', L.explore.select_system);
-  // Back button (contains SVG + text)
+  
   const backBtn = document.getElementById('back-zoom-btn');
   if (backBtn) { const svg = backBtn.querySelector('svg'); backBtn.innerHTML = ''; if (svg) backBtn.appendChild(svg); backBtn.appendChild(document.createTextNode(' ' + L.explore.back)); }
-  // Sound pill (respects current mute state)
+  
   const sp = document.getElementById('sound-pill');
   if (sp) sp.textContent = state.explore.soundOn ? L.explore.sound_on : L.explore.sound_off;
-  // Sex buttons
+  
   _updateSexBtnLabels(L.explore.female, L.explore.male);
-  // Rebuild sidebar (category labels)
+  
   const sbCont = document.getElementById('sidebar-buttons');
   if (sbCont) { sbCont._built = false; buildSidebar(); }
 
-  // Re-render open panel if one is active
+  
   if (state.explore.activeSubHotspot && typeof showSubPanel === 'function') {
     const activeSubId = state.explore.activeSubHotspot;
     const CATEGORIES_flat = typeof CATEGORIES !== 'undefined'
@@ -242,7 +239,7 @@ function applyLang(lang) {
       : [];
     const subDef = CATEGORIES_flat.find(s => s.id === activeSubId);
     if (subDef) {
-      // Small delay to let DOM settle after sidebar rebuild
+      
       setTimeout(() => showSubPanel(activeSubId, subDef), 60);
     }
   }
@@ -265,7 +262,7 @@ function _updateSexBtnLabels(female, male) {
       
       const newWidth = btn.offsetWidth;
       
-      // Animate the intrinsic width change smoothly
+      
       if (oldWidth > 0 && newWidth > 0 && oldWidth !== newWidth) {
         btn.animate([
           { width: oldWidth + 'px', overflow: 'hidden' },
@@ -281,7 +278,7 @@ function _updateSexBtnLabels(female, male) {
 
 
 
-// ─── STATE ───────────────────────────────────────────────────
+
 const state = {
   currentPage: 'home',
   explore: {
@@ -295,59 +292,59 @@ const state = {
   }
 };
 
-// Scroll animation state for smooth LERP interpolation
+
 let scrollAnim = { current: 0, target: 0, animId: null };
 
-// ─── ROUTER (Hash-based SPA) ──────────────────────────────────
+
 const PAGES = ['home', 'about', 'content', 'contact', 'explore'];
 
 function navigateTo(page) {
   if (!PAGES.includes(page)) page = 'home';
   state.currentPage = page;
 
-  // Hide/show pages
+  
   document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
   const target = document.getElementById(`page-${page}`);
   if (target) target.classList.add('active');
 
-  // Navbar
+  
   const navbar = document.getElementById('navbar');
   if (navbar) navbar.classList.toggle('hidden', page === 'explore');
 
-  // Show floating lang toggle only on landing pages; explore has its own
+  
   const langFloat = document.getElementById('lang-float');
   if (langFloat) langFloat.classList.toggle('hidden', page === 'explore');
 
 
-  // Active nav items
+  
   document.querySelectorAll('.nav-item').forEach(el => {
     el.classList.toggle('active', el.dataset.page === page);
   });
 
-  // Close mobile menu
+  
   closeMobileMenu();
 
-  // Scroll to top
+  
   window.scrollTo(0, 0);
 
-  // Render page-specific content
+  
   if (page === 'home') initHome();
-  else if (page === 'about') { /* reveal handled below */ }
+  else if (page === 'about') {  }
   else if (page === 'content') initContent();
   else if (page === 'contact') initContact();
   else if (page === 'explore') initExplore();
 
-  // Inject footer
+  
   injectFooter(page);
 
-  // Trigger reveals
+  
   setTimeout(() => triggerReveal(), 100);
 
-  // Update hash
+  
   history.replaceState(null, '', `#${page}`);
 }
 
-// ─── SPA LINK HANDLER ────────────────────────────────────────
+
 document.addEventListener('click', (e) => {
   const link = e.target.closest('.spa-link');
   if (!link) return;
@@ -356,7 +353,7 @@ document.addEventListener('click', (e) => {
   if (page) navigateTo(page);
 });
 
-// ─── FOOTER INJECTION ────────────────────────────────────────
+
 function injectFooter(page) {
   if (page === 'explore') return;
   const containerId = `${page}-footer`;
@@ -368,7 +365,7 @@ function injectFooter(page) {
   container.appendChild(tpl.content.cloneNode(true));
 }
 
-// ─── NAVBAR MOBILE ───────────────────────────────────────────
+
 const navToggle = document.getElementById('navbar-toggle');
 const navMenu = document.getElementById('navbar-menu');
 const menuIcon = document.getElementById('menu-icon');
@@ -388,7 +385,7 @@ navToggle?.addEventListener('click', () => {
   if (closeIcon) closeIcon.style.display = isOpen ? '' : 'none';
 });
 
-// ─── REVEAL ANIMATION ────────────────────────────────────────
+
 function triggerReveal() {
   const items = document.querySelectorAll(`#page-${state.currentPage} .reveal-item`);
   const observer = new IntersectionObserver((entries) => {
@@ -400,7 +397,7 @@ function triggerReveal() {
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   items.forEach(item => observer.observe(item));
-  // Force visible items in viewport
+  
   setTimeout(() => {
     items.forEach(item => {
       const rect = item.getBoundingClientRect();
@@ -409,7 +406,7 @@ function triggerReveal() {
   }, 50);
 }
 
-// ─── HOME PAGE ───────────────────────────────────────────────
+
 let homeScene, homeCamera, homeRenderer, homeAnimId;
 
 function initHome() {
@@ -519,7 +516,7 @@ function initHome3D() {
   animateHome();
 }
 
-// ─── CONTENT PAGE ────────────────────────────────────────────
+
 const ARTICLES = [
   { id:1, title:'Cardiovascular Longevity', category:'Heart Health', icon:'❤️', color:'#ff3366', shortDesc:'Advanced protocols for maintaining arterial elasticity and heart muscle resilience across your lifespan.', content:'The human heart beats around 100,000 times a day, pumping blood through a vast network of vessels. To maintain cardiovascular health, focus on a diet rich in omega-3 fatty acids, fiber, and antioxidants. Regular aerobic exercise (like brisk walking or swimming) for at least 150 minutes a week strengthens the heart muscle. Additionally, managing stress through mindfulness and getting 7-9 hours of sleep are crucial for preventing endothelial dysfunction and high blood pressure.', bentoClass:'bento-hero' },
   { id:2, title:'Neuroplasticity', category:'Brain Systems', icon:'🧠', color:'#a855f7', shortDesc:'Biohack your brain for sustained focus.', content:'Your nervous system is the body\'s command center. Protecting your nervous system involves consuming brain-boosting nutrients like vitamins B6 and B12, challenging your brain with new learning activities to build neuroplasticity, and avoiding neurotoxins like excessive alcohol. Chronic stress can lead to neuroinflammation, so daily relaxation techniques are vital.', bentoClass:'bento-square-small' },
@@ -564,7 +561,7 @@ function initContent() {
     if (art) openArticleModal(art);
   });
 
-  // Modal setup
+  
   document.getElementById('modal-close-btn')?.addEventListener('click', closeModal);
   document.getElementById('modal-backdrop')?.addEventListener('click', closeModal);
 }
@@ -593,7 +590,7 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// ─── CONTACT PAGE ────────────────────────────────────────────
+
 function initContact() {
   const form = document.getElementById('contact-form');
   if (!form || form._initialized) return;
@@ -608,7 +605,7 @@ function initContact() {
   });
 }
 
-// ─── EXPLORE PAGE - FULL 3D ──────────────────────────────────
+
 const CATEGORIES = [
   { id:'neurology', label:'Neurology', icon:'🧠', position:[0,1.75,0.05], shows:['brain'], zoomOffset:1.0, subHotspots:[
     { id:'neural', label:'Neural Zoomer', position:[0.08,1.83,0.15], focusOrgan:'brain' },
@@ -1824,7 +1821,7 @@ const PANEL_CONTENT = {
   },
 };
 
-// ─── PANEL CONTENT HELPERS (bilingual) ───────────────────────
+
 function getPanelContent(subId) {
   if (currentLang === 'id' && typeof PANEL_CONTENT_ID !== 'undefined' && PANEL_CONTENT_ID[subId]) {
     return PANEL_CONTENT_ID[subId];
@@ -1846,10 +1843,10 @@ let isCamAnimating = false;
 let bgmAudio = null, audioLoaded = false;
 let exploreInited = false;
 
-// ─── PARALLAX STATE ──────────────────────────────────────────
-// Raw normalized mouse pos [-1, 1]
+
+
 const mouse = { x: 0, y: 0 };
-// Smoothed (lerped) mouse values
+
 const smoothMouse = { x: 0, y: 0 };
 
 function initExplore() {
@@ -1863,7 +1860,7 @@ function initExplore() {
   buildHotspots();
   bindExploreUI();
 
-  // Wait for THREE to be available
+  
   setTimeout(() => {
     if (typeof THREE === 'undefined') {
       console.warn('Three.js not loaded');
@@ -1873,7 +1870,7 @@ function initExplore() {
     initCrosshair();
   }, 100);
 
-  // Splash: hide after 2.8s
+  
   const splash = document.getElementById('splash-overlay');
   setTimeout(() => {
     if (splash) splash.classList.add('hidden');
@@ -1912,13 +1909,13 @@ function initExploreThree() {
   exploreControls.maxPolarAngle = Math.PI * 0.9;
   exploreControls.minDistance = 0.15;
   exploreControls.maxDistance = 3.8;
-  exploreControls.autoRotate = false;   // no auto-rotation
+  exploreControls.autoRotate = false;   
   exploreControls.autoRotateSpeed = 0;
   exploreControls.target.set(0, 0.8, 0);
 
   exploreClock = new THREE.Clock();
 
-  // Load body models
+  
   const loader = new THREE.GLTFLoader();
   const bodyGroup = new THREE.Group();
   bodyGroup.name = 'body-group';
@@ -1935,7 +1932,7 @@ function initExploreThree() {
             emissiveIntensity: 0.18,
             roughness: 0.35,
             metalness: 0.35,
-            // Start at 0 — animation loop fades in over 2s
+            
             transparent: true, opacity: 0.0,
             clearcoat: 1.0, clearcoatRoughness: 0.08,
             side: THREE.FrontSide, depthWrite: false,
@@ -1945,17 +1942,17 @@ function initExploreThree() {
       s.scale.set(scale[0], scale[1], scale[2]);
       s.position.set(0, posY, 0);
       s.name = modelId;
-      s.visible = true; // always visible; opacity controlled by animation loop
+      s.visible = true; 
       bodyGroup.add(s);
       loadedModels[modelId] = s;
     });
   }
 
-  // Silver/pearl body meshes — more visible, shinier
+  
   loadBodyModel('public/models/female_base_mesh (1).glb', [2.25,2.25,2.25], -1.9, '#8aaacf', '#4466aa', 'female');
   loadBodyModel('public/models/male_base_mesh.glb',        [0.13,0.12,0.13], -1.6, '#7799bb', '#3355aa', 'male');
 
-  // Load organ models
+  
   ORGAN_MODELS.forEach(organ => {
     loader.load(organ.file, (gltf) => {
       const s = gltf.scene.clone(true);
@@ -1975,7 +1972,7 @@ function initExploreThree() {
     });
   });
 
-  // Resize
+  
   window.addEventListener('resize', () => {
     if (!exploreRenderer) return;
     const w = canvas.parentElement.offsetWidth;
@@ -1985,27 +1982,27 @@ function initExploreThree() {
     exploreRenderer.setSize(w, h);
   });
 
-  // ── Parallax mouse listener (explore page only) ──
+  
   const exploreWrapper = document.getElementById('explore-wrapper');
   exploreWrapper?.addEventListener('mousemove', (e) => {
-    // Normalize to [-1, 1] relative to center of window
+    
     mouse.x = (e.clientX / window.innerWidth  - 0.5) * 2;
     mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
   });
-  // Reset on leave so model snaps gently back to center
+  
   exploreWrapper?.addEventListener('mouseleave', () => {
     mouse.x = 0;
     mouse.y = 0;
   });
 
-  // Animation loop
+  
   function animateExplore() {
     if (state.currentPage !== 'explore') return;
     exploreAnimId = requestAnimationFrame(animateExplore);
     const delta = exploreClock.getDelta();
     const elapsed = exploreClock.getElapsedTime();
 
-    // ── Smooth mouse with eased lerp ──
+    
     const lerpFactor = 0.045;
     smoothMouse.x += (mouse.x - smoothMouse.x) * lerpFactor;
     smoothMouse.y += (mouse.y - smoothMouse.y) * lerpFactor;
@@ -2013,7 +2010,7 @@ function initExploreThree() {
     const isZoomed = !!state.explore.activeOrgan;
 
     if (isZoomed) {
-      // ── ZOOM STATE: subtle translational offset (don't disturb zoom target) ──
+      
       const pX = smoothMouse.x  * 0.12;
       const pY = -smoothMouse.y * 0.06;
       const zoomTarget = targetCamPos.clone().add(new THREE.Vector3(pX, pY, 0));
@@ -2021,28 +2018,28 @@ function initExploreThree() {
       exploreControls.target.lerp(targetLookAt, 0.08);
 
     } else {
-      // ── IDLE STATE: true spherical orbit based on mouse ──
-      // Camera orbits around the model center (lookAt = 0, 0.8, 0)
-      // using spherical coordinates so the movement is a real rotation arc.
-      //
-      //   theta (azimuth)  = mouse X → horizontal rotation around Y axis
-      //   phi   (elevation)= mouse Y → vertical tilt
-      //
+      
+      
+      
+      
+      
+      
+      
       const orbitCenter = new THREE.Vector3(0, 0.8, 0);
-      const orbitRadius  = 5.0;               // distance from model
+      const orbitRadius  = 5.0;               
 
-      // Base angles: facing straight front
-      const baseTheta =  0;                   // 0 = looking from +Z
-      const basePhi   =  Math.PI / 2 + 0.08; // slightly above equator
+      
+      const baseTheta =  0;                   
+      const basePhi   =  Math.PI / 2 + 0.08; 
 
-      // Mouse-driven offsets — ±20° horizontal, ±12° vertical
-      const thetaOffset = smoothMouse.x * 0.35;   // ~20° max
-      const phiOffset   = smoothMouse.y * 0.21;   // ~12° max
+      
+      const thetaOffset = smoothMouse.x * 0.35;   
+      const phiOffset   = smoothMouse.y * 0.21;   
 
       const theta = baseTheta + thetaOffset;
       const phi   = Math.max(0.15, Math.min(Math.PI - 0.15, basePhi + phiOffset));
 
-      // Convert spherical → Cartesian
+      
       const targetX = orbitCenter.x + orbitRadius * Math.sin(phi) * Math.sin(theta);
       const targetY = orbitCenter.y + orbitRadius * Math.cos(phi);
       const targetZ = orbitCenter.z + orbitRadius * Math.sin(phi) * Math.cos(theta);
@@ -2050,7 +2047,7 @@ function initExploreThree() {
       const orbitPos = new THREE.Vector3(targetX, targetY, targetZ);
       exploreCamera.position.lerp(orbitPos, 0.06);
 
-      // Keep lookAt at model center (slight mouse nudge for extra feel)
+      
       exploreControls.target.set(
         smoothMouse.x * 0.04,
         0.8 - smoothMouse.y * 0.03,
@@ -2058,13 +2055,13 @@ function initExploreThree() {
       );
     }
 
-    // ── CSS Parallax on bubble blobs (multi-depth layers) ──
+    
     paralBlobsCSS(smoothMouse.x, smoothMouse.y);
 
-    // ── Body mesh sex fade (2 second linear) ──
-    // Speed: target opacity range is 0.58, over 2s → 0.29 per second
+    
+    
     const BODY_FADE_SPEED = 0.29;
-    const BODY_TARGET_OP  = 0.58;          // visible but not fully opaque
+    const BODY_TARGET_OP  = 0.58;          
     ['female', 'male'].forEach(modelId => {
       const mesh = loadedModels[modelId];
       if (!mesh) return;
@@ -2085,11 +2082,11 @@ function initExploreThree() {
       mesh.visible = maxOp > 0.005;
     });
 
-    // ── Update hotspot 2D positions ──
+    
     updateHotspotPositions();
     updateSubHotspotPositions();
 
-    // ── Organ material animation ──
+    
     ORGAN_MODELS.forEach(organ => {
       const entry = loadedModels[`organ-${organ.id}`];
       if (!entry) return;
@@ -2122,14 +2119,14 @@ function initExploreThree() {
   animateExplore();
 }
 
-// ─── CSS PARALLAX HELPER ─────────────────────────────────────
-// Moves the decorative bubble blobs at different speeds
-// to reinforce the illusion of depth layers.
+
+
+
 function paralBlobsCSS(mx, my) {
-  // Each blob moves at a different speed ratio
-  // (closer = moves more, farther = moves less)
+  
+  
   const layers = [
-    { sel: '.blob-1', sx: 28, sy: 18 },  // foreground-ish
+    { sel: '.blob-1', sx: 28, sy: 18 },  
     { sel: '.blob-2', sx: 18, sy: 12 },
     { sel: '.blob-3', sx:  9, sy:  6 },
     { sel: '.blob-4', sx: 14, sy: 10 },
@@ -2137,17 +2134,17 @@ function paralBlobsCSS(mx, my) {
   layers.forEach(({ sel, sx, sy }) => {
     const el = document.querySelector(`#page-explore ${sel}`);
     if (!el) return;
-    // Translate opposite to mouse (classic parallax: background moves against cursor)
+    
     const tx = -mx * sx;
     const ty = -my * sy;
-    // Keep existing CSS animation by layering translate on top of it
+    
     el.style.setProperty('--px', `${tx}px`);
     el.style.setProperty('--py', `${ty}px`);
   });
 }
 
-// ─── BODY HOTSPOT DOTS ─────────────────────────────────────────
-// Creates one pulsing dot per category at body organ position.
+
+
 function buildHotspots() {
   const existing = document.getElementById('body-hotspot-layer');
   if (existing) existing.remove();
@@ -2161,7 +2158,7 @@ function buildHotspots() {
     dot.className = 'body-hotspot';
     dot.dataset.cat = cat.id;
     dot.title = cat.label;
-    // Stagger the pulse animation so dots don't all pulse together
+    
     const idx = CATEGORIES.findIndex(c => c.id === cat.id);
     dot.style.animationDelay = `${idx * 0.35}s`;
     dot.addEventListener('click', () => selectOrgan(cat.id));
@@ -2179,7 +2176,7 @@ function updateHotspotPositions() {
 
   const { activeOrgan } = state.explore;
 
-  // Hide all dots when zoomed into an organ (sub-hotspots take over)
+  
   if (activeOrgan) {
     layer.style.display = 'none';
     return;
@@ -2190,7 +2187,7 @@ function updateHotspotPositions() {
     const dot = layer.querySelector(`[data-cat="${cat.id}"]`);
     if (!dot) return;
 
-    // Project 3D position to 2D screen
+    
     const pos3d = new THREE.Vector3(...cat.position);
     const screenPos = toScreenPos(pos3d);
 
@@ -2199,7 +2196,7 @@ function updateHotspotPositions() {
       return;
     }
 
-    // Clamp to canvas bounds so dots don’t drift off screen
+    
     const canvas = exploreRenderer.domElement;
     const W = canvas.width / window.devicePixelRatio;
     const H = canvas.height / window.devicePixelRatio;
@@ -2256,15 +2253,15 @@ function updateSubHotspotPositions() {
 
 function setSexVisibility(sex) {
   state.explore.sex = sex;
-  // NOTE: .visible and opacity are now handled by the animation loop (2s fade)
-  // No direct toggle here so the fade plays out naturally.
+  
+  
   document.getElementById('btn-female')?.classList.toggle('active', sex === 'female');
   document.getElementById('btn-male')?.classList.toggle('active', sex === 'male');
   document.getElementById('mob-female-btn')?.classList.toggle('active', sex === 'female');
   document.getElementById('mob-male-btn')?.classList.toggle('active', sex === 'male');
 }
 
-// Global so onclick= can call it
+
 window.setSex = (sex) => setSexVisibility(sex);
 
 function buildSidebar() {
@@ -2297,7 +2294,7 @@ function buildSidebar() {
     btn.addEventListener('mouseleave', () => { state.explore.hoveredOrgan = null; });
   });
 
-  // Mobile sidebar toggle
+  
   document.getElementById('sidebar-header')?.addEventListener('click', () => {
     document.getElementById('organ-sidebar')?.classList.toggle('expanded');
   });
@@ -2307,7 +2304,7 @@ function selectOrgan(catId) {
   state.explore.activeOrgan = catId;
   state.explore.activeSubHotspot = null;
 
-  // Update camera target
+  
   const cat = CATEGORIES.find(c => c.id === catId);
   if (cat) {
     const zoomZ = cat.zoomOffset ?? 1.0;
@@ -2338,27 +2335,27 @@ function updateExploreUI() {
   const prevCat = activeIndex <= 0 ? CATEGORIES[CATEGORIES.length - 1] : CATEGORIES[activeIndex - 1];
   const nextCat = activeIndex >= CATEGORIES.length - 1 || activeIndex === -1 ? CATEGORIES[0] : CATEGORIES[activeIndex + 1];
 
-  // Sidebar
+  
   document.getElementById('organ-sidebar')?.classList.toggle('hidden', !!activeOrgan);
   document.querySelectorAll('.organ-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cat === activeOrgan);
   });
 
-  // Home btn
+  
   document.getElementById('explore-home-btn')?.style.setProperty('display', activeOrgan ? 'none' : '');
 
-  // Sex header
+  
   const sexHeader = document.getElementById('sex-header');
   if (sexHeader) sexHeader.style.display = activeSubHotspot ? 'none' : '';
 
-  // Back zoom btn
+  
   document.getElementById('back-zoom-overlay')?.classList.toggle('visible', !!activeOrgan && !activeSubHotspot);
 
-  // Bottom bar
+  
   const bb = document.getElementById('bottom-bar');
   if (bb) bb.classList.toggle('visible', !!activeOrgan && !activeSubHotspot);
 
-  // Active pill
+  
   if (activeOrgan && activeIndex !== -1) {
     const cat = CATEGORIES[activeIndex];
     const icon = document.getElementById('active-icon');
@@ -2367,26 +2364,26 @@ function updateExploreUI() {
     if (label) label.textContent = cat.label;
   }
 
-  // Prev/Next labels
+  
   const prevLabel = document.getElementById('prev-label');
   const nextLabel = document.getElementById('next-label');
   if (prevLabel) prevLabel.textContent = prevCat.label;
   if (nextLabel) nextLabel.textContent = nextCat.label;
 
-  // Sub info overlay
+  
   const subOverlay = document.getElementById('sub-info-overlay');
   if (subOverlay) subOverlay.style.display = activeSubHotspot ? '' : 'none';
 
-  // Mobile ctrl pill
+  
   const mobPill = document.getElementById('mobile-ctrl-pill');
   if (mobPill) mobPill.style.display = activeSubHotspot ? 'none' : '';
 
-  // Hotspot DOM (2D overlays on explore page)
+  
   updateHotspots();
 }
 
 function updateHotspots() {
-  // Remove existing hotspot container
+  
   const existing = document.getElementById('hotspot-layer');
   if (existing) existing.remove();
 
@@ -2401,7 +2398,7 @@ function updateHotspots() {
   layer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:15;';
 
   cat.subHotspots.forEach((sh, i) => {
-    // Project 3D to 2D
+    
     const pos3d = new THREE.Vector3(...sh.position);
     const screenPos = toScreenPos(pos3d);
     if (!screenPos) return;
@@ -2439,11 +2436,11 @@ function showSubPanel(subId) {
   const sub = cat?.subHotspots?.find(s => s.id === subId);
   if (!sub) return;
 
-  // Back label
+  
   const bl = document.getElementById('sub-back-label');
   if (bl) bl.textContent = sub.label?.toUpperCase() || '';
 
-  // Video
+  
   const video = document.getElementById('sub-video');
   const vmap = VIDEO_MAP[subId];
   if (video && vmap) {
@@ -2457,7 +2454,7 @@ function showSubPanel(subId) {
     document.getElementById('video-wrapper').style.display = 'none';
   }
 
-  // Reset video transition styles & scroll position
+  
   scrollAnim.current = 0;
   scrollAnim.target = 0;
   if (scrollAnim.animId) {
@@ -2470,7 +2467,7 @@ function showSubPanel(subId) {
 
   const contentData = getPanelContent(subId) || { primary: `<h2 class="panel-title">${sub.label}</h2><div class="panel-body-text"><p>Analisis mendetail segera hadir...</p></div>` };
 
-  // Nav pills
+  
   const topNav = document.getElementById('sub-top-nav');
   const info = getSubContent(subId, sub.label);
 
@@ -2478,14 +2475,14 @@ function showSubPanel(subId) {
   let showOverview = false;
   let renderNav, renderTabs;
 
-  // Helper to update panel content
+  
   const updatePanelHtml = (contentHtml) => {
     const panelContent = document.getElementById('sub-panel-content');
     if (panelContent) {
       panelContent.innerHTML = contentHtml || `<h2 class="panel-title">${sub.label}</h2><div class="panel-body-text"><p>Detailed analysis coming soon...</p></div>`;
       if (scrollArea) scrollArea.scrollTop = 0;
 
-      // Bind click on redirect button
+      
       document.getElementById('go-to-overview-btn')?.addEventListener('click', () => {
         if (info.tabs) {
           if (tabIdx < info.tabs.length - 1) {
@@ -2502,7 +2499,7 @@ function showSubPanel(subId) {
 
   if (topNav) {
     if (info.tabs) {
-      // multi-tab nav
+      
       renderTabs = () => {
         topNav.innerHTML = `<div class="nav-pill-container">
           <span class="nav-subtitle">${sub.label}:</span>
@@ -2512,7 +2509,7 @@ function showSubPanel(subId) {
           ).join('')}
         </div>`;
 
-        // Update content based on tab index
+        
         let tabKey = 'primary';
         if (tabIdx === 0) tabKey = 'primary';
         else if (tabIdx === 1) tabKey = 'secondary';
@@ -2535,7 +2532,7 @@ function showSubPanel(subId) {
           }
         </div>`;
 
-        // Update content based on showOverview
+        
         updatePanelHtml(showOverview ? contentData.overview : contentData.primary);
 
         document.getElementById('nav-primary')?.addEventListener('click', () => { showOverview = false; renderNav(); });
@@ -2547,11 +2544,11 @@ function showSubPanel(subId) {
 }
 
 function bindExploreUI() {
-  // Scroll animation linking scroll to video size & shape using LERP
+  
   const scrollArea = document.querySelector('.panel-scroll-area');
   
   function updateScrollAnim() {
-    scrollAnim.current += (scrollAnim.target - scrollAnim.current) * 0.12; // Butter-smooth easing factor
+    scrollAnim.current += (scrollAnim.target - scrollAnim.current) * 0.12; 
     if (Math.abs(scrollAnim.target - scrollAnim.current) < 0.001) {
       scrollAnim.current = scrollAnim.target;
       scrollAnim.animId = null;
@@ -2571,10 +2568,10 @@ function bindExploreUI() {
     });
   }
 
-  // Home button
+  
   document.getElementById('explore-home-btn')?.addEventListener('click', () => navigateTo('home'));
 
-  // Back zoom
+  
   document.getElementById('back-zoom-btn')?.addEventListener('click', () => {
     state.explore.activeOrgan = null;
     state.explore.activeSubHotspot = null;
@@ -2583,18 +2580,18 @@ function bindExploreUI() {
     updateExploreUI();
   });
 
-  // Sub info back
+  
   document.getElementById('sub-info-back')?.addEventListener('click', () => {
     state.explore.activeSubHotspot = null;
     document.getElementById('sub-info-overlay').style.display = 'none';
     updateExploreUI();
   });
 
-  // Sound toggle
+  
   document.getElementById('sound-toggle')?.addEventListener('click', toggleSound);
   document.getElementById('mob-music-btn')?.addEventListener('click', toggleSound);
 
-  // Mobile back btn
+  
   document.getElementById('mob-back-btn')?.addEventListener('click', () => {
     if (state.explore.activeOrgan) {
       state.explore.activeOrgan = null;
@@ -2607,7 +2604,7 @@ function bindExploreUI() {
     }
   });
 
-  // Nav buttons (bottom bar)
+  
   document.getElementById('bb-prev')?.addEventListener('click', navPrev);
   document.getElementById('bb-next')?.addEventListener('click', navNext);
   document.getElementById('bb-prev-mob')?.addEventListener('click', navPrev);
@@ -2639,13 +2636,13 @@ function initCrosshair() {
   });
 }
 
-// ─── AUDIO ───────────────────────────────────────────────────
+
 async function autoPlayBGM() {
   if (audioLoaded) return;
   try {
     bgmAudio = new Audio('public/models/Music.mp3');
     bgmAudio.loop = true;
-    bgmAudio.volume = 0.5; // Set volume to 50%
+    bgmAudio.volume = 0.5; 
     audioLoaded = true;
 
     if (state.explore.soundOn) {
@@ -2658,12 +2655,12 @@ async function autoPlayBGM() {
 }
 
 function toggleSound() {
-  // Always flip state first
+  
   state.explore.soundOn = !state.explore.soundOn;
 
   if (state.explore.soundOn) {
     if (!bgmAudio || !audioLoaded) {
-      // First time or failed before — try to start audio now (user gesture present)
+      
       autoPlayBGM();
     } else {
       bgmAudio.play().catch(e => console.warn('BGM resume failed:', e));
@@ -2691,7 +2688,7 @@ function updateSoundUI() {
       : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/></svg>';
   }
 
-  // Tab visibility
+  
   document.addEventListener('visibilitychange', () => {
     if (!bgmAudio || !audioLoaded) return;
     if (document.hidden) {
@@ -2702,23 +2699,23 @@ function updateSoundUI() {
   });
 }
 
-// ─── INIT ────────────────────────────────────────────────────
+
 function init() {
-  // Determine initial page from hash
+  
   const hash = window.location.hash.slice(1);
   const page = PAGES.includes(hash) ? hash : 'home';
   navigateTo(page);
 
-  // Restore saved language preference
+  
   applyLang(currentLang);
 
-  // Handle browser back/forward
+  
   window.addEventListener('hashchange', () => {
     const h = window.location.hash.slice(1);
     if (PAGES.includes(h)) navigateTo(h);
   });
 
-  // Resize handler
+  
   window.addEventListener('resize', () => {
     state.explore.isMobile = window.innerWidth <= 768;
     if (homeRenderer) {

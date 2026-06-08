@@ -487,7 +487,7 @@ function initHome3D() {
   homeScene.add(bodyGroup);
 
   const loader = new THREE.GLTFLoader();
-  loader.load('public/models/female_base_mesh (1).glb', (gltf) => {
+  loader.load('assets/models/female_base_mesh (1).glb', (gltf) => {
     const scene3d = gltf.scene;
     scene3d.traverse(child => {
       if (child.isMesh) {
@@ -649,23 +649,23 @@ const CATEGORIES = [
 ];
 
 const ORGAN_MODELS = [
-  { id: 'brain', file: 'public/models/human-brain.glb', position: [0, 1.75, 0.05], scale: 0.15, rotation: [0, -1.5, 0], color: '#ff66c4', emissive: '#ff2288' },
-  { id: 'heart', file: 'public/models/realistic_human_heart.glb', position: [0, 1.1, 0.10], scale: 0.15, color: '#aa1144', emissive: '#ff5588' },
-  { id: 'liver', file: 'public/models/human_liver_and_gallbladder.glb', position: [-0.07, 0.80, 0.1], rotation: [0, -1.5, 0], scale: 1, color: '#dd3366', emissive: '#ff77aa' },
-  { id: 'kidney', file: 'public/models/human_kidney.glb', position: [0, 0.67, 0.04], scale: 0.1, color: '#550000', emissive: '#880011' },
-  { id: 'intestine', file: 'public/models/small_and_large_intestine.glb', position: [-0.16, 0.45, 0.1], scale: 0.3, color: '#aa1144', emissive: '#ff5588' },
-  { id: 'dna', file: 'public/models/dna.glb', position: [-0.50, 0.85, -0.13], rotation: [0.6, 0.75, 1.4], scale: 0.00007, color: '#ff2288', emissive: '#ff44aa' },
-  { id: 'cell', file: 'public/models/eukaryotic_cell.glb', position: [0.55, 0.85, 0.0], rotation: [0, 1.5, 1.5], scale: 0.06, color: '#0044ff', emissive: '#0088ff' },
+  { id: 'brain', file: 'assets/models/human-brain.glb', position: [0, 1.75, 0.05], scale: 0.15, rotation: [0, -1.5, 0], color: '#ff66c4', emissive: '#ff2288' },
+  { id: 'heart', file: 'assets/models/realistic_human_heart.glb', position: [0, 1.1, 0.10], scale: 0.15, color: '#aa1144', emissive: '#ff5588' },
+  { id: 'liver', file: 'assets/models/human_liver_and_gallbladder.glb', position: [-0.07, 0.80, 0.1], rotation: [0, -1.5, 0], scale: 1, color: '#dd3366', emissive: '#ff77aa' },
+  { id: 'kidney', file: 'assets/models/human_kidney.glb', position: [0, 0.67, 0.04], scale: 0.1, color: '#550000', emissive: '#880011' },
+  { id: 'intestine', file: 'assets/models/small_and_large_intestine.glb', position: [-0.16, 0.45, 0.1], scale: 0.3, color: '#aa1144', emissive: '#ff5588' },
+  { id: 'dna', file: 'assets/models/dna.glb', position: [-0.50, 0.85, -0.13], rotation: [0.6, 0.75, 1.4], scale: 0.00007, color: '#ff2288', emissive: '#ff44aa' },
+  { id: 'cell', file: 'assets/models/eukaryotic_cell.glb', position: [0.55, 0.85, 0.0], rotation: [0, 1.5, 1.5], scale: 0.06, color: '#0044ff', emissive: '#0088ff' },
 ];
 
 const VIDEO_MAP = {
-  'oxi': { src: 'public/models/OxidativeStressV03.mp4', label: 'RNA\nDamage' },
-  'toxins_panel': { src: 'public/models/ToxinsV03.mp4', label: 'Toxins\nLoad' },
-  'neural': { src: 'public/models/NeuralHealthV03.mp4', label: 'Neural\nHealth' },
-  'neurotrans': { src: 'public/models/Neurotransmiters.mp4', label: 'Synapse\nActivity' },
-  'gutzoomer': { src: 'public/models/MasterGutZoomerV03.mp4', label: 'Microbiome\nFlora' },
-  'cardio': { src: 'public/models/CardioZoomerNew.mp4', label: 'Arterial\nPlaque' },
-  'hormone_z': { src: 'public/models/Hormones3D.mp4', label: 'Steroid\nPathways' },
+  'oxi': { src: 'assets/models/OxidativeStressV03.mp4', label: 'RNA\nDamage' },
+  'toxins_panel': { src: 'assets/models/ToxinsV03.mp4', label: 'Toxins\nLoad' },
+  'neural': { src: 'assets/models/NeuralHealthV03.mp4', label: 'Neural\nHealth' },
+  'neurotrans': { src: 'assets/models/Neurotransmiters.mp4', label: 'Synapse\nActivity' },
+  'gutzoomer': { src: 'assets/models/MasterGutZoomerV03.mp4', label: 'Microbiome\nFlora' },
+  'cardio': { src: 'assets/models/CardioZoomerNew.mp4', label: 'Arterial\nPlaque' },
+  'hormone_z': { src: 'assets/models/Hormones3D.mp4', label: 'Steroid\nPathways' },
 };
 
 const SUBHOTSPOT_CONTENT = {
@@ -1963,8 +1963,8 @@ function initExploreThree() {
   }
 
 
-  loadBodyModel('public/models/female_base_mesh (1).glb', [2.25, 2.25, 2.25], -1.9, '#8aaacf', '#4466aa', 'female');
-  loadBodyModel('public/models/male_base_mesh.glb', [0.13, 0.12, 0.13], -1.6, '#7799bb', '#3355aa', 'male');
+  loadBodyModel('assets/models/female_base_mesh (1).glb', [2.25, 2.25, 2.25], -1.9, '#8aaacf', '#4466aa', 'female');
+  loadBodyModel('assets/models/male_base_mesh.glb', [0.13, 0.12, 0.13], -1.6, '#7799bb', '#3355aa', 'male');
 
 
   ORGAN_MODELS.forEach(organ => {
@@ -2654,7 +2654,7 @@ function initCrosshair() {
 async function autoPlayBGM() {
   if (audioLoaded) return;
   try {
-    bgmAudio = new Audio('public/models/Music.mp3');
+    bgmAudio = new Audio('assets/models/Music.mp3');
     bgmAudio.loop = true;
     bgmAudio.volume = 0.5;
     audioLoaded = true;

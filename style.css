@@ -267,6 +267,11 @@ body {
   transform: translateX(4px);
 }
 
+html[lang="id"] .cta-button {
+  font-size: 0.75rem;
+  padding: 0.75rem 1.2rem;
+}
+
 .shimmer-btn::after {
   content: '';
   position: absolute;
@@ -550,6 +555,11 @@ body {
 
 .btn-primary-large:hover .btn-icon-right {
   transform: translateX(6px);
+}
+
+html[lang="id"] .btn-primary-large {
+  font-size: 0.9rem;
+  padding: 1rem 1.8rem;
 }
 
 .btn-icon-right {

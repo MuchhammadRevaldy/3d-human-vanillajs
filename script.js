@@ -200,6 +200,7 @@ function applyLang(lang) {
 
   _setHtml('h1.content-title', L.content.title);
   _setTxt('p.content-subtitle', L.content.subtitle);
+  initContent();
 
 
   _setHtml('h1.contact-title', L.contact.title);
@@ -302,7 +303,7 @@ function navigateTo(page) {
   if (!PAGES.includes(page)) page = 'home';
   state.currentPage = page;
 
-
+  document.querySelectorAll('.reveal-item').forEach(el => el.classList.remove('is-visible'));
   document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
   const target = document.getElementById(`page-${page}`);
   if (target) target.classList.add('active');
@@ -451,7 +452,17 @@ function initParticles() {
 function initHome3D() {
   if (typeof THREE === 'undefined') return;
   const canvas = document.getElementById('home-3d-canvas');
-  if (!canvas || canvas._initialized) return;
+  if (!canvas) return;
+
+  if (canvas._initialized) {
+    if (homeRenderer) {
+      homeRenderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
+      homeCamera.aspect = canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight;
+      homeCamera.updateProjectionMatrix();
+    }
+    if (typeof window.animateHomeGlobal === 'function') window.animateHomeGlobal();
+    return;
+  }
   canvas._initialized = true;
 
   if (homeRenderer) { homeRenderer.dispose(); cancelAnimationFrame(homeAnimId); }
@@ -513,11 +524,12 @@ function initHome3D() {
     controls.update();
     homeRenderer.render(homeScene, homeCamera);
   }
+  window.animateHomeGlobal = animateHome;
   animateHome();
 }
 
 
-const ARTICLES = [
+const ARTICLES_EN = [
   { id: 1, title: 'Cardiovascular Longevity', category: 'Heart Health', icon: '❤️', color: '#ff3366', shortDesc: 'Advanced protocols for maintaining arterial elasticity and heart muscle resilience across your lifespan.', content: 'The human heart beats around 100,000 times a day, pumping blood through a vast network of vessels. To maintain cardiovascular health, focus on a diet rich in omega-3 fatty acids, fiber, and antioxidants. Regular aerobic exercise (like brisk walking or swimming) for at least 150 minutes a week strengthens the heart muscle. Additionally, managing stress through mindfulness and getting 7-9 hours of sleep are crucial for preventing endothelial dysfunction and high blood pressure.', bentoClass: 'bento-hero' },
   { id: 2, title: 'Neuroplasticity', category: 'Brain Systems', icon: '🧠', color: '#a855f7', shortDesc: 'Biohack your brain for sustained focus.', content: 'Your nervous system is the body\'s command center. Protecting your nervous system involves consuming brain-boosting nutrients like vitamins B6 and B12, challenging your brain with new learning activities to build neuroplasticity, and avoiding neurotoxins like excessive alcohol. Chronic stress can lead to neuroinflammation, so daily relaxation techniques are vital.', bentoClass: 'bento-square-small' },
   { id: 3, title: 'Genetics & DNA', category: 'Cellular Health', icon: '🧬', color: '#3b82f6', shortDesc: 'Understanding the building blocks of life and how to protect your telomeres.', content: 'Your DNA contains the instructions for every cell in your body. Protecting your genetics means minimizing DNA damage from oxidative stress. Antioxidant-rich foods, minimizing exposure to environmental toxins and UV radiation, and maintaining metabolic health are key. Fasting or caloric restriction mimetics can trigger autophagy, the body\'s way of clearing out damaged cells and repairing DNA.', bentoClass: 'bento-tall' },
@@ -530,13 +542,32 @@ const ARTICLES = [
   { id: 10, title: 'Sleep & Recovery', category: 'Restorative Health', icon: '🌙', color: '#6366f1', shortDesc: 'Master the science of sleep for cellular repair, memory, and longevity.', content: 'Sleep is where the brain consolidates memories, the body repairs tissues, and the glymphatic system flushes out metabolic waste. Optimal sleep (7–9 hours) requires a consistent schedule, a dark and cool environment, and minimizing blue light exposure.', bentoClass: 'bento-square-small' },
 ];
 
+const ARTICLES_ID = [
+  { id: 1, title: 'Longevitas Kardiovaskular', category: 'Kesehatan Jantung', icon: '❤️', color: '#ff3366', shortDesc: 'Protokol tingkat lanjut untuk menjaga elastisitas arteri dan ketahanan otot jantung sepanjang hidup Anda.', content: 'Jantung manusia berdetak sekitar 100.000 kali sehari, memompa darah melalui jaringan pembuluh darah yang luas. Untuk menjaga kesehatan kardiovaskular, fokuslah pada diet kaya asam lemak omega-3, serat, dan antioksidan. Latihan aerobik teratur (seperti jalan cepat atau berenang) setidaknya selama 150 menit seminggu memperkuat otot jantung. Selain itu, mengelola stres melalui mindfulness dan tidur 7-9 jam sangat penting untuk mencegah disfungsi endotel dan tekanan darah tinggi.', bentoClass: 'bento-hero' },
+  { id: 2, title: 'Neuroplastisitas', category: 'Sistem Otak', icon: '🧠', color: '#a855f7', shortDesc: 'Retas (biohack) otak Anda untuk fokus yang berkelanjutan.', content: 'Sistem saraf Anda adalah pusat komando tubuh. Melindungi sistem saraf Anda melibatkan konsumsi nutrisi penambah kinerja otak seperti vitamin B6 dan B12, menantang otak Anda dengan aktivitas pembelajaran baru untuk membangun neuroplastisitas, dan menghindari neurotoksin seperti alkohol berlebihan. Stres kronis dapat menyebabkan peradangan saraf, sehingga teknik relaksasi harian sangat penting.', bentoClass: 'bento-square-small' },
+  { id: 3, title: 'Genetika & DNA', category: 'Kesehatan Seluler', icon: '🧬', color: '#3b82f6', shortDesc: 'Memahami blok penyusun kehidupan dan cara melindungi telomer Anda.', content: 'DNA Anda berisi instruksi untuk setiap sel di tubuh Anda. Melindungi genetika Anda berarti meminimalkan kerusakan DNA dari stres oksidatif. Makanan kaya antioksidan, meminimalkan paparan racun lingkungan dan radiasi UV, serta menjaga kesehatan metabolisme adalah kunci. Puasa atau pembatasan kalori dapat memicu autofagi, cara tubuh membersihkan sel yang rusak dan memperbaiki DNA.', bentoClass: 'bento-tall' },
+  { id: 4, title: 'Mikrobioma Usus', category: 'Sistem Pencernaan', icon: '🦠', color: '#10b981', shortDesc: 'Hubungan vital antara bakteri usus Anda dan kekebalan tubuh.', content: 'Mikrobioma usus terdiri dari triliunan bakteri yang memainkan peran mendalam dalam pencernaan, kekebalan, dan bahkan pengaturan suasana hati. Untuk mendukung usus yang sehat, konsumsilah beragam makanan nabati, yang menyediakan prebiotik. Makanan fermentasi seperti yogurt, kefir, dan kimchi memperkenalkan probiotik bermanfaat. Batasi makanan olahan dan gula rafinasi, yang dapat mendorong pertumbuhan bakteri berbahaya.', bentoClass: 'bento-square-small' },
+  { id: 5, title: 'Fungsi & Filtrasi Ginjal', category: 'Detoksifikasi', icon: '💧', color: '#f59e0b', shortDesc: 'Mendukung sistem penyaringan alami tubuh Anda.', content: 'Hati dan ginjal adalah organ detoksifikasi utama tubuh Anda. Hati memproses nutrisi dan menetralkan zat berbahaya, sementara ginjal menyaring limbah dari darah untuk menghasilkan urin. Anda dapat menjaga kesehatannya dengan minum banyak air, membatasi asupan natrium, dan makan makanan kaya antioksidan seperti buah beri dan sayuran berdaun hijau gelap.', bentoClass: 'bento-wide' },
+  { id: 6, title: 'Imunitas Seluler', category: 'Sistem Pertahanan', icon: '🛡️', color: '#0ea5e9', shortDesc: 'Membangun benteng tak tertembus terhadap patogen dan stres oksidatif.', content: 'Sistem kekebalan tubuh yang kuat bergantung pada keseimbangan sel darah putih, antibodi, dan mekanisme pertahanan seluler. Tingkat stres oksidatif yang tinggi dapat merusak fungsi kekebalan tubuh. Lawan ini dengan diet tinggi vitamin C, D, dan E, serta seng. Tidur yang cukup dan olahraga rutin mendorong sirkulasi sel kekebalan yang efisien.', bentoClass: 'bento-wide' },
+  { id: 7, title: 'Kesehatan Pernapasan', category: 'Sistem Paru-paru', icon: '💨', color: '#06b6d4', shortDesc: 'Optimalkan kapasitas paru-paru dan oksigenasi Anda untuk tingkat energi puncak dan vitalitas yang berkelanjutan.', content: 'Paru-paru bertanggung jawab untuk mengoksigenasi setiap sel di tubuh Anda. Praktik seperti pernapasan diafragma dapat meningkatkan kapasitas paru-paru dan mengurangi aktivasi respons stres. Paparan udara bersih, menghindari polutan, dan latihan kardio teratur adalah kunci.', bentoClass: 'bento-hero' },
+  { id: 8, title: 'Sistem Muskuloskeletal', category: 'Kesehatan Struktural', icon: '🦴', color: '#f97316', shortDesc: 'Bangun kerangka tulang dan otot yang tangguh untuk kekuatan dan mobilitas seumur hidup.', content: 'Tulang dan otot Anda membentuk fondasi struktural tubuh Anda. Untuk menjaga kesehatan muskuloskeletal, prioritaskan latihan ketahanan (2–4x/minggu) yang mendorong kepadatan tulang dan melawan sarkopenia. Sintesis kolagen untuk kesehatan tulang rawan bergantung pada vitamin C dan asupan protein yang cukup.', bentoClass: 'bento-tall' },
+  { id: 9, title: 'Keseimbangan Hormonal', category: 'Sistem Endokrin', icon: '⚗️', color: '#ec4899', shortDesc: 'Atur pembawa pesan kimiawi tubuh Anda untuk menguasai metabolisme dan suasana hati.', content: 'Sistem endokrin mengatur hormon—pembawa pesan kimiawi yang mengontrol metabolisme, pertumbuhan, suasana hati, dan reproduksi. Faktor gaya hidup utama untuk keseimbangan hormonal termasuk mengelola kortisol (hormon stres) melalui tidur dan mindfulness, menjaga gula darah yang sehat untuk menjaga stabilitas insulin.', bentoClass: 'bento-square-small' },
+  { id: 10, title: 'Tidur & Pemulihan', category: 'Kesehatan Restoratif', icon: '🌙', color: '#6366f1', shortDesc: 'Kuasai ilmu tidur untuk perbaikan sel, memori, dan longevitas.', content: 'Tidur adalah tempat otak mengkonsolidasikan ingatan, tubuh memperbaiki jaringan, dan sistem glimfatik membuang limbah metabolisme. Tidur optimal (7–9 jam) membutuhkan jadwal yang konsisten, lingkungan yang gelap dan sejuk, serta meminimalkan paparan cahaya biru.', bentoClass: 'bento-square-small' },
+];
+
+function getArticles() {
+  return currentLang === 'id' ? ARTICLES_ID : ARTICLES_EN;
+}
+
 function initContent() {
   const grid = document.getElementById('bento-grid');
-  if (!grid || grid._initialized) return;
-  grid._initialized = true;
+  if (!grid) return;
 
-  grid.innerHTML = ARTICLES.map(art => `
-    <div class="bento-card ${art.bentoClass}" data-id="${art.id}" tabindex="0" role="button">
+  const articles = getArticles();
+  const readMoreTxt = currentLang === 'id' ? 'Baca Artikel' : 'Read Article';
+
+  grid.innerHTML = articles.map((art, index) => `
+    <div class="bento-card reveal-item reveal-delay-${(index % 6) + 1} ${art.bentoClass}" data-id="${art.id}" tabindex="0" role="button">
       <div class="bento-card-content">
         <div class="bento-card-header">
           <div class="bento-icon-box" style="font-size:${art.bentoClass === 'bento-hero' ? '28px' : '24px'}">${art.icon}</div>
@@ -547,23 +578,27 @@ function initContent() {
           <p class="bento-desc">${art.shortDesc}</p>
         </div>
         <div class="bento-footer">
-          <span class="read-more">Read Article</span>
+          <span class="read-more">${readMoreTxt}</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
     </div>
   `).join('');
 
-  grid.addEventListener('click', (e) => {
-    const card = e.target.closest('.bento-card');
-    if (!card) return;
-    const art = ARTICLES.find(a => a.id === parseInt(card.dataset.id));
-    if (art) openArticleModal(art);
-  });
+  if (!grid._initialized) {
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.bento-card');
+      if (!card) return;
+      const art = getArticles().find(a => a.id === parseInt(card.dataset.id));
+      if (art) openArticleModal(art);
+    });
 
+    document.getElementById('modal-close-btn')?.addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop')?.addEventListener('click', closeModal);
+    grid._initialized = true;
+  }
 
-  document.getElementById('modal-close-btn')?.addEventListener('click', closeModal);
-  document.getElementById('modal-backdrop')?.addEventListener('click', closeModal);
+  setTimeout(() => triggerReveal(), 50);
 }
 
 function openArticleModal(art) {
@@ -1856,6 +1891,7 @@ let targetLookAt = new THREE.Vector3(0, 0.8, 0);
 let isCamAnimating = false;
 let bgmAudio = null, audioLoaded = false;
 let exploreInited = false;
+let animateExploreLoop = null;
 
 
 
@@ -1866,6 +1902,13 @@ const smoothMouse = { x: 0, y: 0 };
 function initExplore() {
   if (exploreInited) {
     updateExploreUI();
+    const canvas = document.getElementById('explore-canvas');
+    if (canvas && exploreRenderer && exploreCamera) {
+      exploreRenderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
+      exploreCamera.aspect = canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight;
+      exploreCamera.updateProjectionMatrix();
+    }
+    if (typeof animateExploreLoop === 'function') animateExploreLoop();
     return;
   }
   exploreInited = true;
@@ -2130,7 +2173,8 @@ function initExploreThree() {
     exploreControls.update();
     exploreRenderer.render(exploreScene, exploreCamera);
   }
-  animateExplore();
+  animateExploreLoop = animateExplore;
+  animateExploreLoop();
 }
 
 
